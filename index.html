@@ -63,7 +63,6 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
 
 <!-- Overlay -->
 <div id="browserOverlay">
-  <img src="https://upload.wikimedia.org/wikipedia/en/0/09/TikTok_logo.svg" alt="TikTok Logo">
   <h2>Open in Browser</h2>
   <p>For the best experience and working downloads, please open this page in <strong>Google Chrome</strong>.</p>
   <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png" alt="Google Chrome">
@@ -72,7 +71,6 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
   <p id="thankText">✅ Thank you! You can continue.</p>
 </div>
 
-<!-- ORIGINAL HTML START -->
 <div class="container">
 <header>
     <h1>Vaultz4Games</h1>
@@ -105,66 +103,5 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
   </div>
 </div>
 
-<!-- Game info sections kept exactly as in your HTML -->
-<div id="demon" class="game-info">
-  <!-- Demon Slayer content from your original HTML -->
-</div>
-
-<div id="naruto" class="game-info">
-  <!-- Naruto content from your original HTML -->
-</div>
-
-<div id="onepiece" class="game-info">
-  <!-- One Piece content from your original HTML -->
-</div>
-
-<div id="solo" class="game-info">
-  <button class="back-btn" onclick="goBack()">Go Back</button>
-  <h2>Solo Leveling</h2>
-  <span class="mod-label">Mod - Unlimited Money</span>
-  <p><span class="coming-soon red">Coming Soon</span></p>
-  <div class="video-container"><iframe src="https://www.youtube.com/embed/_2JT1Vdlsio" allowfullscreen></iframe></div>
-  <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('solo-script','https://lockedapp.net/cl/js/n623pk',2000)">
-    <i class="fas fa-download"></i> Download
-    <span class="loading"></span>
-  </button>
-  <div id="solo-script"></div>
-  <button class="back-btn back-bottom" onclick="goBack()">Go Back</button>
-</div>
-<!-- ORIGINAL HTML END -->
-
-<script>
-// Overlay behavior
-document.addEventListener('DOMContentLoaded', function() {
-  const overlay = document.getElementById('browserOverlay');
-  const btn = document.getElementById('openBrowserBtn');
-  const thank = document.getElementById('thankText');
-
-  const ua = navigator.userAgent || "";
-  if (/TikTok/i.test(ua)) {
-    overlay.style.display = 'flex'; // show overlay only in TikTok
-  } else {
-    overlay.style.display = 'none'; // hide for normal browsers
-  }
-
-  btn.addEventListener('click', function() {
-    thank.style.display = 'block'; // show thank you text
-    setTimeout(()=>{ overlay.style.display = 'none'; }, 2000); // hide overlay
-  });
-});
-
-// Page scripts
-function showGame(id){
-    document.querySelector('.game-grid').style.display = 'none';
-    document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
-    const page = document.getElementById(id);
-    page.style.display = 'block';
-    window.scrollTo(0,0);
-}
-function goBack(){
-    document.querySelector('.game-grid').style.display = 'grid';
-    document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
-}
-function toggleInstructions(id){
-    const el = document.getElementById(id);
-    el
+<!-- Keep all original game-info sections exactly as in your HTML -->
+<div id="demon"
