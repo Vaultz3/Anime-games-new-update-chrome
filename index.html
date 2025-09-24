@@ -58,7 +58,6 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
 #browserOverlay .step { margin:10px 0; text-align:left; background:#222; padding:12px; border-radius:10px; display:flex; align-items:center; }
 #browserOverlay .step i { font-size:1.5rem; margin-right:10px; color:#ff6f00; }
 #browserOverlay .highlight { color:#32cd32; font-weight:bold; }
-#browserOverlay button { display:none; } /* no fake button */
 </style>
 </head>
 <body>
@@ -106,26 +105,30 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
   </div>
 </div>
 
-<!-- All game-info sections remain exactly as in your original HTML, with CPA scripts -->
+<!-- Your game-info sections (demon, naruto, onepiece, solo) remain exactly as before with CPA scripts -->
 
-<!-- Script section -->
 <script>
+// Show game page
 function showGame(id){
-    document.querySelector('.game-grid').style.display = 'none'; // <-- fixed
+    document.querySelector('.game-grid').style.display = 'none';
     document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
     const page = document.getElementById(id);
     page.style.display = 'block';
     page.style.boxShadow = "0 10px 35px rgba(0,0,0,0.7)";
     window.scrollTo(0,0);
 }
+
+// Go back to main grid
 function goBack(){
     document.querySelector('.game-grid').style.display = 'grid';
     document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
 }
+
 function toggleInstructions(id){
     const el = document.getElementById(id);
     el.style.display = (el.style.display === 'block') ? 'none' : 'block';
 }
+
 function loadScriptDelayed(containerId, src, delay){
     setTimeout(() => {
         const container = document.getElementById(containerId);
@@ -137,12 +140,24 @@ function loadScriptDelayed(containerId, src, delay){
         container.appendChild(script);
     }, delay);
 }
+
 function showLoading(button){
     const spinner = button.querySelector('.loading');
     spinner.style.display = 'inline-block';
     setTimeout(()=>{ spinner.style.display = 'none'; }, 4000);
 }
 
-// TikTok overlay behavior
+// TikTok overlay detection
 document.addEventListener('DOMContentLoaded', function() {
-  const overlay = document.getElementById('browser
+  const overlay = document.getElementById('browserOverlay');
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  if (/TikTok/i.test(ua)) {
+    overlay.style.display = 'flex'; // show overlay in TikTok
+  } else {
+    overlay.style.display = 'none'; // hide overlay outside TikTok
+  }
+});
+</script>
+
+</body>
+</html>
