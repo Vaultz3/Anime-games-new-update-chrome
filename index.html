@@ -51,13 +51,14 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
   background:rgba(0,0,0,0.95); color:#fff; display:flex; flex-direction:column;
   justify-content:center; align-items:center; text-align:center; padding:20px; z-index:9999;
   font-family:Arial, sans-serif;
+  transition: opacity 0.5s ease;
 }
 #browserOverlay h2 { font-size:1.8rem; color:#ff6f00; margin-bottom:10px; }
 #browserOverlay p { font-size:1.1rem; margin-bottom:10px; color:#ccc; }
-#browserOverlay img { max-width:150px; margin-bottom:15px; border-radius:12px; }
-#browserOverlay .step { margin:10px 0; text-align:left; background:#222; padding:12px; border-radius:10px; display:flex; align-items:center; }
+#browserOverlay .step { margin:12px 0; text-align:left; background:#222; padding:12px; border-radius:10px; display:flex; align-items:center; }
 #browserOverlay .step i { font-size:1.5rem; margin-right:10px; color:#ff6f00; }
 #browserOverlay .highlight { color:#32cd32; font-weight:bold; }
+#browserOverlay img { max-width:150px; margin-top:15px; border-radius:12px; }
 </style>
 </head>
 <body>
@@ -147,12 +148,13 @@ function showLoading(button){
     setTimeout(()=>{ spinner.style.display = 'none'; }, 4000);
 }
 
-// TikTok overlay detection
+// TikTok overlay detection with auto-hide after 7 seconds
 document.addEventListener('DOMContentLoaded', function() {
   const overlay = document.getElementById('browserOverlay');
   const ua = navigator.userAgent || navigator.vendor || window.opera;
   if (/TikTok/i.test(ua)) {
     overlay.style.display = 'flex'; // show overlay in TikTok
+    setTimeout(()=>{ overlay.style.display = 'none'; }, 7000); // hide after 7s
   } else {
     overlay.style.display = 'none'; // hide overlay outside TikTok
   }
