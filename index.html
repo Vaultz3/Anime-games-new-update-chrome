@@ -45,7 +45,7 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
 .search-bar { text-align:center; margin-top:10px;}
 .search-bar input { width:80%; max-width:400px; padding:8px 12px; border-radius:50px; border:none; }
 
-/* TikTok Overlay */
+/* TikTok overlay */
 #browserOverlay {
   position:fixed; top:0; left:0; width:100%; height:100%;
   background:rgba(0,0,0,0.95); color:#fff; display:flex; flex-direction:column;
@@ -58,7 +58,6 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
 #browserOverlay .step { margin:12px 0; text-align:left; background:#222; padding:12px; border-radius:10px; display:flex; align-items:center; }
 #browserOverlay .step i { font-size:1.5rem; margin-right:10px; color:#ff6f00; }
 #browserOverlay .highlight { color:#32cd32; font-weight:bold; }
-#browserOverlay img { max-width:150px; margin-top:15px; border-radius:12px; }
 </style>
 </head>
 <body>
@@ -66,11 +65,10 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
 <!-- TikTok Overlay -->
 <div id="browserOverlay">
   <h2>Open in Browser</h2>
-  <p>To get working downloads, please open this page in a real browser:</p>
+  <p>To access working downloads, please open this page in a real browser:</p>
   <div class="step"><i class="fas fa-ellipsis-h"></i> Tap the <strong>3 dots menu</strong> in TikTok</div>
   <div class="step"><i class="fas fa-external-link-alt"></i> Select <span class="highlight">Open in Browser</span></div>
-  <div class="step"><i class="fas fa-link"></i> Then come back here to continue</div>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png" alt="Google Chrome">
+  <div class="step"><i class="fas fa-link"></i> Then continue to explore all games</div>
   <p>✅ Thank you!</p>
 </div>
 
@@ -106,7 +104,7 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
   </div>
 </div>
 
-<!-- Your game-info sections (demon, naruto, onepiece, solo) remain exactly as before with CPA scripts -->
+<!-- Keep all your game-info sections (demon, naruto, onepiece, solo) and CPA scripts exactly as before -->
 
 <script>
 // Show game page
@@ -148,13 +146,13 @@ function showLoading(button){
     setTimeout(()=>{ spinner.style.display = 'none'; }, 4000);
 }
 
-// TikTok overlay detection with auto-hide after 7 seconds
+// TikTok overlay detection with auto-hide after 6 seconds
 document.addEventListener('DOMContentLoaded', function() {
   const overlay = document.getElementById('browserOverlay');
   const ua = navigator.userAgent || navigator.vendor || window.opera;
   if (/TikTok/i.test(ua)) {
     overlay.style.display = 'flex'; // show overlay in TikTok
-    setTimeout(()=>{ overlay.style.display = 'none'; }, 7000); // hide after 7s
+    setTimeout(()=>{ overlay.style.display = 'none'; }, 6000); // hide after 6s
   } else {
     overlay.style.display = 'none'; // hide overlay outside TikTok
   }
