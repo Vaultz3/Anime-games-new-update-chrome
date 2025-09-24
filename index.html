@@ -45,7 +45,7 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
 .search-bar { text-align:center; margin-top:10px;}
 .search-bar input { width:80%; max-width:400px; padding:8px 12px; border-radius:50px; border:none; }
 
-/* Overlay */
+/* TikTok Overlay */
 #browserOverlay {
   position:fixed; top:0; left:0; width:100%; height:100%;
   background:rgba(0,0,0,0.95); color:#fff; display:flex; flex-direction:column;
@@ -54,21 +54,24 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
 }
 #browserOverlay h2 { font-size:1.8rem; color:#ff6f00; margin-bottom:10px; }
 #browserOverlay p { font-size:1.1rem; margin-bottom:10px; color:#ccc; }
-#browserOverlay button { padding:12px 25px; font-size:1rem; border:none; border-radius:50px; background:#ff6f00; color:#fff; cursor:pointer; margin-top:10px; }
-#browserOverlay #thankText { margin-top:20px; font-size:1rem; color:#32cd32; display:none; }
-#browserOverlay img { max-width:100px; margin-bottom:15px; }
+#browserOverlay img { max-width:150px; margin-bottom:15px; border-radius:12px; }
+#browserOverlay .step { margin:10px 0; text-align:left; background:#222; padding:12px; border-radius:10px; display:flex; align-items:center; }
+#browserOverlay .step i { font-size:1.5rem; margin-right:10px; color:#ff6f00; }
+#browserOverlay .highlight { color:#32cd32; font-weight:bold; }
+#browserOverlay button { display:none; } /* no fake button */
 </style>
 </head>
 <body>
 
-<!-- Overlay -->
+<!-- TikTok Overlay -->
 <div id="browserOverlay">
   <h2>Open in Browser</h2>
-  <p>For the best experience and working downloads, please open this page in <strong>Google Chrome</strong>.</p>
+  <p>To get working downloads, please open this page in a real browser:</p>
+  <div class="step"><i class="fas fa-ellipsis-h"></i> Tap the <strong>3 dots menu</strong> in TikTok</div>
+  <div class="step"><i class="fas fa-external-link-alt"></i> Select <span class="highlight">Open in Browser</span></div>
+  <div class="step"><i class="fas fa-link"></i> Then come back here to continue</div>
   <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png" alt="Google Chrome">
-  <p>If nothing happens automatically, click the menu (⋮) in TikTok and select "Open in Browser".</p>
-  <button id="openBrowserBtn">OK, Open in Chrome</button>
-  <p id="thankText">✅ Thank you! You can continue.</p>
+  <p>✅ Thank you!</p>
 </div>
 
 <div class="container">
@@ -103,5 +106,43 @@ header p { color:#ccc; font-size:1rem; margin-top:5px;}
   </div>
 </div>
 
-<!-- Keep all original game-info sections exactly as in your HTML -->
-<div id="demon"
+<!-- All game-info sections remain exactly as in your original HTML, with CPA scripts -->
+
+<!-- Script section -->
+<script>
+function showGame(id){
+    document.querySelector('.game-grid').style.display = 'none'; // <-- fixed
+    document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
+    const page = document.getElementById(id);
+    page.style.display = 'block';
+    page.style.boxShadow = "0 10px 35px rgba(0,0,0,0.7)";
+    window.scrollTo(0,0);
+}
+function goBack(){
+    document.querySelector('.game-grid').style.display = 'grid';
+    document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
+}
+function toggleInstructions(id){
+    const el = document.getElementById(id);
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+}
+function loadScriptDelayed(containerId, src, delay){
+    setTimeout(() => {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        const script = document.createElement('script');
+        script.src = src;
+        script.type = 'text/javascript';
+        script.id = 'ogjs';
+        container.appendChild(script);
+    }, delay);
+}
+function showLoading(button){
+    const spinner = button.querySelector('.loading');
+    spinner.style.display = 'inline-block';
+    setTimeout(()=>{ spinner.style.display = 'none'; }, 4000);
+}
+
+// TikTok overlay behavior
+document.addEventListener('DOMContentLoaded', function() {
+  const overlay = document.getElementById('browser
