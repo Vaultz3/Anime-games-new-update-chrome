@@ -6,226 +6,493 @@
     <title>Vaultz4Games</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #0f0f0f url('https://www.transparenttextures.com/patterns/dark-mosaic.png') repeat;
             background-attachment: fixed;
             color: #f0f0f0;
+            line-height: 1.6;
         }
-        .container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 20px;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
         }
-        header { 
-            text-align: center; 
-            padding: 20px 20px 10px 20px;
+        
+        /* Header and Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            position: relative;
         }
-        header h1 { 
-            font-size: 2.3rem; 
-            color: #ff6f00; 
-            margin-bottom: 8px; 
-            border-bottom: 4px solid #ff6f00; 
-            display: inline-block; 
-            padding-bottom: 5px;
+        
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            padding-bottom: 15px;
+            width: 80%; /* Reduced width to create space on sides */
+            border-bottom: 1px solid #333;
+            margin: 0 auto; /* Center the logo */
         }
-        header p { 
-            color: #ccc; 
-            font-size: 1rem; 
-            margin-top: 5px;
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: #ff6f00;
+            margin: 0;
         }
-        .game-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 20px; 
-            margin-top: 30px; 
-            padding: 10px; 
+        
+        .logo p {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin: 5px 0 0 0;
         }
-        .game-card { 
-            background: #1e1e1e; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            height: 230px; 
-            position: relative; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5); 
-            border: 1px solid rgba(255,111,0,0.3); 
+        
+        .hamburger-menu {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
             padding: 5px;
+            margin-left: auto;
         }
-        .game-card:hover { 
-            transform: translateY(-5px);
-        }
-        .game-card img { 
-            width: 100%; 
-            height: 150px; 
-            object-fit: cover; 
+        
+        .hamburger-menu span {
+            width: 25px;
+            height: 3px;
+            background: #ff6f00;
+            margin: 3px 0;
             transition: 0.3s;
         }
-        .game-card .info { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 8px 12px;
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,111,0,0.3);
+            z-index: 1000;
+            min-width: 200px;
         }
-        .game-card .info h3 { 
-            margin: 0; 
-            color: #fff; 
+        
+        .dropdown-menu.active {
+            display: block;
+        }
+        
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 10px 0;
+        }
+        
+        .dropdown-menu li {
+            padding: 10px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-menu a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        .dropdown-menu a:hover {
+            color: #ff6f00;
+        }
+        
+        .sub-menu {
+            display: none;
+            padding-left: 15px;
+            margin-top: 5px;
+        }
+        
+        .sub-menu.active {
+            display: block;
+        }
+        
+        .search-bar {
+            margin: 25px auto;
+            position: relative;
+            width: 80%;
+            max-width: 500px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: none;
+            background: #ffffff;
+            color: #333;
             font-size: 1rem;
         }
-        .game-card .info span { 
-            color: #ff6f00; 
-            font-weight: bold; 
-            font-size: 0.9rem;
+        
+        .search-bar i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
         }
-        .game-card .coming-soon.red { 
-            color: red; 
-            font-weight: bold; 
-            font-size: 0.9rem; 
-            position: absolute; 
-            top: 10px; 
-            left: 10px;
+        
+        .game-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
         }
-        .game-card .mod-label { 
-            display: block; 
-            margin-top: 5px; 
-            background: linear-gradient(45deg, #1e90ff, #32cd32); 
-            color: #fff; 
-            font-size: 0.8rem; 
-            font-weight: bold; 
-            text-align: center; 
-            border-radius: 8px; 
-            padding: 2px 5px;
-        }
-        .game-info { 
-            display: none; 
-            padding: 20px; 
-            background: rgba(30,30,30,0.95); 
-            border-radius: 12px; 
-            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
-        }
-        .platform-banner { 
-            text-align: center; 
-            background: rgba(255, 158, 74, 0.2); 
-            color: #ffb74d; 
-            font-weight: bold; 
-            padding: 8px 0; 
-            border-radius: 8px; 
-            margin: 25px 0 15px 0; 
-            font-size: 1.2rem;
-        }
-        .platform-banner i { 
-            margin-right: 8px; 
-            color: #ff9800;
-        }
-        .separator-line { 
-            border: 1px solid rgba(255,183,77,0.3); 
-            margin: 25px 0; 
-            border-radius: 2px;
-        }
-        .video-container { 
-            position: relative; 
-            padding-bottom: 56.25%; 
-            height: 0; 
-            overflow: hidden; 
-            border-radius: 10px; 
-            margin: 15px 0;
-        }
-        .video-container iframe { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            border: none; 
+        
+        .game-item {
+            display: flex;
+            background: #1e1e1e;
             border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,111,0,0.3);
+            padding: 4px;
         }
-        .download-btn, .how-btn, .back-btn { 
-            margin-top: 10px; 
-            cursor: pointer; 
-            border-radius: 50px; 
-            padding: 10px 25px; 
-            font-weight: bold; 
-            position: relative; 
+        
+        .game-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.7);
         }
-        .download-btn { 
-            background: linear-gradient(45deg, #ff6f00, #ff8c00); 
-            color: #fff; 
-            border: none; 
+        
+        .game-image {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            border-radius: 6px 0 0 6px;
+            overflow: hidden;
         }
-        .download-btn span.loading { 
-            display: none; 
-            position: absolute; 
-            right: 10px; 
-            top: 50%; 
-            transform: translateY(-50%); 
-            width: 16px; 
-            height: 16px; 
-            border: 2px solid #fff; 
-            border-top: 2px solid transparent; 
-            border-radius: 50%; 
-            animation: spin 1s linear infinite;
+        
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        @keyframes spin { 
-            0% { transform: translateY(-50%) rotate(0deg); } 
-            100% { transform: translateY(-50%) rotate(360deg); } 
+        
+        .game-details {
+            padding: 12px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .how-btn { 
-            background: #555; 
-            color: #fff; 
-            border: none; 
-            margin-left: 10px;
+        
+        .game-title {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #fff;
         }
-        .back-btn { 
-            background: #333; 
-            color: #fff; 
-            border: none; 
-            padding: 10px 20px; 
+        
+        .game-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        
+        .game-platform {
+            color: #ff6f00;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .game-description {
+            color: #ccc;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .game-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        
+        .game-tag {
+            background: linear-gradient(45deg, #1e90ff, #32cd32);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .game-tag.mod {
+            background: linear-gradient(45deg, #ff6f00, #ff8c00);
+        }
+        
+        .game-tag.apk {
+            background: linear-gradient(45deg, #9c27b0, #e91e63);
+        }
+        
+        .game-info {
+            display: none;
+            padding: 20px;
+            background: rgba(30,30,30,0.95);
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+            border: 1px solid rgba(255,111,0,0.3);
+        }
+        
+        .back-btn {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .game-header {
+            display: flex;
+            gap: 20px;
             margin-bottom: 20px;
         }
-        .instruction-text { 
-            display: none; 
-            background: #222; 
-            padding: 15px; 
-            border-radius: 10px; 
-            margin-top: 10px; 
+        
+        .game-header-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .game-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .game-header-info {
+            flex-grow: 1;
+        }
+        
+        .game-header-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .game-header-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .game-header-platform {
+            color: #ff6f00;
+            font-weight: bold;
+        }
+        
+        .game-header-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .game-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #ffb74d;
+            font-size: 0.9rem;
+        }
+        
+        .game-header-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .platform-banner {
+            text-align: center;
+            background: rgba(255, 158, 74, 0.2);
+            color: #ffb74d;
+            font-weight: bold;
+            padding: 10px 0;
+            border-radius: 8px;
+            margin: 25px 0 15px;
+            font-size: 1.1rem;
+        }
+        
+        .platform-banner i {
+            margin-right: 8px;
+            color: #ff9800;
+        }
+        
+        .separator-line {
+            border: 1px solid rgba(255,183,77,0.3);
+            margin: 25px 0;
+            border-radius: 2px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .download-btn, .how-btn {
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-weight: bold;
+            width: 100%;
+            border: none;
+            font-size: 1rem;
+            position: relative;
+        }
+        
+        .download-btn {
+            background: linear-gradient(45deg, #ff6f00, #ff8c00);
+            color: #fff;
+        }
+        
+        .download-btn span.loading {
+            display: none;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border: 2px solid #fff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
+        }
+        
+        .how-btn {
+            background: #555;
+            color: #fff;
+            margin-top: 10px;
+        }
+        
+        .instruction-text {
+            display: none;
+            background: #222;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
             color: #ccc;
         }
-        .back-bottom { 
-            margin-top: 30px; 
-            display: inline-block; 
-        }
-        .fake-stats { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 5px 0; 
-            font-size: 0.9rem; 
-            color: #ffb74d; 
+        
+        .fake-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: #ffb74d;
             margin-top: 10px;
         }
-        .fake-stats i { 
+        
+        .fake-stats i {
             margin-right: 5px;
         }
-        .search-bar { 
-            text-align: center; 
-            margin-top: 10px;
+        
+        /* Footer and Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0 10px 0;
+            gap: 10px;
         }
-        .search-bar input { 
-            width: 80%; 
-            max-width: 400px; 
-            padding: 8px 12px; 
-            border-radius: 50px; 
-            border: none; 
+        
+        .page-number {
+            background: #1e1e1e;
+            color: #ff6f00;
+            border: 1px solid rgba(255,111,0,0.3);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
         }
-
+        
+        .page-number.active, .page-number:hover {
+            background: #ff6f00;
+            color: #fff;
+        }
+        
+        .about-section {
+            background: #1e1e1e;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border: 1px solid rgba(255,111,0,0.3);
+        }
+        
+        .about-section h2 {
+            color: #ff6f00;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #ff6f00;
+            padding-bottom: 3px;
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+        
+        .about-section p {
+            color: #ccc;
+            line-height: 1.5;
+            font-size: 0.85rem;
+        }
+        
         /* Overlay */
         #browserOverlay {
             position: fixed;
-            top: 0; 
-            left: 0; 
-            right: 0; 
+            top: 0;
+            left: 0;
+            right: 0;
             bottom: 0;
             background: rgba(0,0,0,0.92);
             z-index: 9999;
@@ -237,22 +504,26 @@
             text-align: center;
             padding: 20px;
         }
+        
         #browserOverlay h2 {
             color: #ff6f00;
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
+        
         #browserOverlay p {
             margin-bottom: 10px;
             font-size: 1rem;
         }
+        
         #browserOverlay .step {
             margin: 8px 0;
             font-size: 1rem;
         }
+        
         #overlayClose {
             position: absolute;
-            top: 15px; 
+            top: 15px;
             right: 20px;
             background: none;
             border: none;
@@ -260,22 +531,45 @@
             font-size: 2rem;
             cursor: pointer;
         }
-        /* small orange-tinted chrome icon */
-        #browserOverlay .chrome-icon {
-            margin-left: 6px;
-            color: #ff6f00;
-            width: 18px;
-            vertical-align: middle;
+        
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .game-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .game-item {
+                flex-direction: column;
+                height: 100%;
+            }
+            
+            .game-image {
+                width: 100%;
+                height: 160px;
+                border-radius: 6px 6px 0 0;
+            }
+            
+            .game-details {
+                padding: 12px;
+            }
+            
+            .game-header {
+                flex-direction: row;
+            }
+            
+            .download-btn, .how-btn {
+                width: auto;
+                display: inline-block;
+                margin-right: 10px;
+            }
         }
         
-        /* Mobile-only indicator */
-        .mobile-only {
-            background: linear-gradient(45deg, #ff6f00, #ff8c00);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
+        @media (min-width: 1024px) {
+            .game-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
     </style>
 </head>
@@ -284,56 +578,254 @@
 <!-- Overlay -->
 <div id="browserOverlay" aria-hidden="false">
     <button id="overlayClose" aria-label="Close overlay">×</button>
-    <h2>Open in Browser <i class="fab fa-chrome chrome-icon" aria-hidden="true"></i></h2>
+    <h2>Open in Browser <i class="fab fa-chrome" aria-hidden="true"></i></h2>
     <p>To avoid issues when downloading, please open this page in your real browser:</p>
-    <div class="step"><i class="fas fa-ellipsis-h"></i> Tap the <strong>3 dots</strong> in TikTok</div>
+    <div class="step"><i class="fas fa-ellipsis-h"></i> Tap the <strong>3 dots</strong> next to TikTok/Instagram</div>
     <div class="step"><i class="fas fa-external-link-alt"></i> Choose <span style="color:#ff6f00;font-weight:bold;">Open in Browser</span></div>
     <p>✅ Thank you!</p>
 </div>
 
 <div class="container">
+    <!-- Header with Hamburger Menu -->
     <header>
-        <h1>Vaultz4Games</h1>
-        <p>100% working anime & top games for PC & Mobile — all the best titles in one place!</p>
+        <div class="logo">
+            <h1>Vaultz4Games</h1>
+            <p>100% working anime & top games for PC & Mobile</p>
+        </div>
+        <div class="hamburger-menu" id="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <ul>
+                <li><a href="#" id="topGamesLink">Top Games</a>
+                    <ul class="sub-menu" id="topGamesMenu">
+                        <li><a href="#" onclick="showGame('animebattle')">Anime Battle Royal</a></li>
+                        <li><a href="#" onclick="showGame('hiddenones')">The Hidden Ones</a></li>
+                        <li><a href="#" onclick="showGame('demon')">Demon Slayer</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" id="upcomingGamesLink">Upcoming Games</a>
+                    <ul class="sub-menu" id="upcomingGamesMenu">
+                        <li>My Hero Academia</li>
+                        <li>Hunter X Hunter</li>
+                        <li>One Punch Man World</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </header>
 
+    <!-- Search Bar -->
     <div class="search-bar">
-        <input type="text" placeholder="Search games...">
+        <input type="text" id="searchInput" placeholder="Search games..." onkeyup="filterGames()">
+        <i class="fas fa-search"></i>
     </div>
 
-    <div class="game-grid">
-        <div class="game-card" onclick="showGame('demon')">
-            <img src="https://demonslayer-hinokami.sega.com/img/purchase/digital-standard.jpg" alt="Demon Slayer">
-            <div class="info"><h3>Demon Slayer</h3><span>PC/Mobile</span></div>
+    <!-- Game List -->
+    <div class="game-list" id="gameList">
+        <!-- Anime Battle Royal -->
+        <div class="game-item" onclick="showGame('animebattle')">
+            <div class="game-image">
+                <img src="https://i.ytimg.com/vi/btgqblq80FU/maxresdefault.jpg" alt="Anime Battle Royal">
+            </div>
+            <div class="game-details">
+                <div class="game-title">Anime Battle Royal</div>
+                <div class="game-meta">
+                    <div class="game-platform">Mobile</div>
+                </div>
+                <div class="game-description">Fight with your favorite anime characters in this epic battle royale game.</div>
+                <div class="game-tags">
+                    <div class="game-tag">PPSSPP</div>
+                    <div class="game-tag">Action</div>
+                </div>
+            </div>
         </div>
-        <div class="game-card" onclick="showGame('naruto')">
-            <img src="https://sm.ign.com/ign_in/screenshot/default/naruto-ultimate-ninja-storm-cover_rbhk.jpg" alt="Naruto">
-            <div class="info"><h3>Naruto</h3><span>Mobile</span></div>
-            <span class="mod-label">Mod - Unlimited Money</span>
+        
+        <!-- Demon Slayer -->
+        <div class="game-item" onclick="showGame('demon')">
+            <div class="game-image">
+                <img src="https://demonslayer-hinokami.sega.com/img/purchase/digital-standard.jpg" alt="Demon Slayer">
+            </div>
+            <div class="game-details">
+                <div class="game-title">Demon Slayer: The Hinokami Chronicles</div>
+                <div class="game-meta">
+                    <div class="game-platform">PC/Mobile</div>
+                </div>
+                <div class="game-description">Become a demon slayer and fight against powerful demons in this action RPG.</div>
+                <div class="game-tags">
+                    <div class="game-tag mod">Cracked</div>
+                    <div class="game-tag">RPG</div>
+                    <div class="game-tag mod">Mod</div>
+                </div>
+            </div>
         </div>
-        <div class="game-card" onclick="showGame('onepiece')">
-            <img src="https://www.latestmodapks.com/wp-content/uploads/2023/04/ONE-PIECE-Bounty-Rush-1.webp" alt="One Piece">
-            <div class="info"><h3>One Piece</h3><span>Mobile</span></div>
-            <span class="mod-label">Mod - Unlimited Money</span>
+        
+        <!-- Naruto -->
+        <div class="game-item" onclick="showGame('naruto')">
+            <div class="game-image">
+                <img src="https://sm.ign.com/ign_in/screenshot/default/naruto-ultimate-ninja-storm-cover_rbhk.jpg" alt="Naruto">
+            </div>
+            <div class="game-details">
+                <div class="game-title">Naruto Ultimate Ninja Storm</div>
+                <div class="game-meta">
+                    <div class="game-platform">Mobile</div>
+                </div>
+                <div class="game-description">Experience the epic story of Naruto in this action-packed adventure game.</div>
+                <div class="game-tags">
+                    <div class="game-tag mod">Unlimited Money</div>
+                    <div class="game-tag">Action</div>
+                    <div class="game-tag apk">APK</div>
+                </div>
+            </div>
         </div>
-        <div class="game-card" onclick="showGame('solo')">
-            <img src="https://gaming-cdn.com/images/products/19526/orig/solo-leveling-arise-overdrive-pc-steam-cover.jpg?v=1756394713" alt="Solo Leveling">
-            <div class="info"><h3>Solo Leveling</h3><span class="mobile-only">Mobile Only</span></div>
-            <span class="mod-label">Mod - Unlimited Money</span>
+        
+        <!-- One Piece -->
+        <div class="game-item" onclick="showGame('onepiece')">
+            <div class="game-image">
+                <img src="https://www.latestmodapks.com/wp-content/uploads/2023/04/ONE-PIECE-Bounty-Rush-1.webp" alt="One Piece">
+            </div>
+            <div class="game-details">
+                <div class="game-title">One Piece: Bounty Rush</div>
+                <div class="game-meta">
+                    <div class="game-platform">Mobile</div>
+                </div>
+                <div class="game-description">Join the Straw Hat crew in this exciting pirate adventure game.</div>
+                <div class="game-tags">
+                    <div class="game-tag mod">Unlimited Money</div>
+                    <div class="game-tag">Adventure</div>
+                    <div class="game-tag apk">APK</div>
+                </div>
+            </div>
         </div>
+        
+        <!-- Solo Leveling -->
+        <div class="game-item" onclick="showGame('solo')">
+            <div class="game-image">
+                <img src="https://gaming-cdn.com/images/products/19526/orig/solo-leveling-arise-overdrive-pc-steam-cover.jpg?v=1756394713" alt="Solo Leveling">
+            </div>
+            <div class="game-details">
+                <div class="game-title">Solo Leveling: Arise</div>
+                <div class="game-meta">
+                    <div class="game-platform">Mobile</div>
+                </div>
+                <div class="game-description">Become the strongest hunter in this RPG based on the popular webtoon.</div>
+                <div class="game-tags">
+                    <div class="game-tag mod">Unlimited Money</div>
+                    <div class="game-tag">RPG</div>
+                    <div class="game-tag apk">APK</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- The Hidden Ones -->
+        <div class="game-item" onclick="showGame('hiddenones')">
+            <div class="game-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMfswS4P5yOhi9ZJd_HifNdLQw4ve3D6x_X7e1pKVxgu9KTirp_HqL6AbgnRQ6CvGCf9c&usqp=CAU" alt="The Hidden Ones">
+            </div>
+            <div class="game-details">
+                <div class="game-title">The Hidden Ones</div>
+                <div class="game-meta">
+                    <div class="game-platform">Mobile</div>
+                </div>
+                <div class="game-description">Stealth action adventure in an open world with RPG elements.</div>
+                <div class="game-tags">
+                    <div class="game-tag">Action</div>
+                    <div class="game-tag">Adventure</div>
+                    <div class="game-tag apk">APK</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="pagination">
+        <div class="page-number active">1</div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section" id="aboutSection">
+        <h2>About Us</h2>
+        <p>Vaultz4Games is your ultimate destination for 100% working anime and top games for both PC and Mobile. We provide a carefully curated collection of the best titles in one place, ensuring quality and functionality. Our platform is dedicated to bringing you the latest mods, cracked versions, and exclusive content for an enhanced gaming experience. Whether you're looking for action-packed adventures, RPGs, or battle royale games, Vaultz4Games has something for every anime and gaming enthusiast.</p>
     </div>
 
     <!-- Game info sections -->
+    
+    <!-- Anime Battle Royal -->
+    <div id="animebattle" class="game-info">
+        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back to Games</button>
+        
+        <div class="game-header">
+            <div class="game-header-image">
+                <img src="https://i.ytimg.com/vi/btgqblq80FU/maxresdefault.jpg" alt="Anime Battle Royal">
+            </div>
+            <div class="game-header-info">
+                <div class="game-header-title">Anime Battle Royal</div>
+                <div class="game-header-meta">
+                    <div class="game-header-platform">Mobile</div>
+                </div>
+                <div class="game-header-stats">
+                    <div class="game-stat"><i class="fas fa-star"></i> 4.7/5</div>
+                    <div class="game-stat"><i class="fas fa-download"></i> 856,321 downloads</div>
+                </div>
+                <div class="game-header-tags">
+                    <div class="game-tag">PPSSPP</div>
+                    <div class="game-tag">Action</div>
+                    <div class="game-tag">Battle Royale</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="platform-banner"><i class="fas fa-gamepad"></i> PPSSPP Version</div>
+        <div class="video-container"><iframe src="https://www.youtube.com/embed/50HDyaLFOuU" allowfullscreen></iframe></div>
+        <p><strong>PPSSPP Version:</strong> Optimized for Android & iOS. Run in PPSSPP emulator with unlimited money mod.</p>
+        
+        <div class="fake-stats">
+            <div><i class="fas fa-star"></i> 4.7/5</div>
+            <div>~856,321 downloads</div>
+        </div>
+        
+        <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('animebattle-script','https://lockedapp.org/cl/js/9vq61g',2000)"><i class="fas fa-download"></i> Download PPSSPP <span class="loading"></span></button>
+        <button class="how-btn" onclick="toggleInstructions('animebattle-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
+        <div id="animebattle-instructions" class="instruction-text">Verify by selecting an offer to get the PPSSPP game file. Requires PPSSPP emulator to play.</div>
+        <div id="animebattle-script"></div>
+    </div>
+
     <!-- Demon Slayer -->
     <div id="demon" class="game-info">
-        <button class="back-btn" onclick="goBack()">Go Back</button>
-        <h2>Demon Slayer: The Hinokami Chronicles</h2>
-        <div class="platform-banner"><i class="fas fa-desktop"></i> PC Version:</div>
+        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back to Games</button>
+        
+        <div class="game-header">
+            <div class="game-header-image">
+                <img src="https://demonslayer-hinokami.sega.com/img/purchase/digital-standard.jpg" alt="Demon Slayer">
+            </div>
+            <div class="game-header-info">
+                <div class="game-header-title">Demon Slayer: The Hinokami Chronicles</div>
+                <div class="game-header-meta">
+                    <div class="game-header-platform">PC/Mobile</div>
+                </div>
+                <div class="game-header-stats">
+                    <div class="game-stat"><i class="fas fa-star"></i> 4.8/5</div>
+                    <div class="game-stat"><i class="fas fa-download"></i> 1,234,567 downloads</div>
+                </div>
+                <div class="game-header-tags">
+                    <div class="game-tag mod">Cracked</div>
+                    <div class="game-tag">RPG</div>
+                    <div class="game-tag mod">Mod</div>
+                    <div class="game-tag">Action</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="platform-banner"><i class="fas fa-desktop"></i> PC Version</div>
         <div class="video-container"><iframe src="https://www.youtube.com/embed/Y1a_8oqtRJI" allowfullscreen></iframe></div>
+        
         <div class="fake-stats">
             <div><i class="fas fa-star"></i> 4.8/5</div>
             <div>~1,234,567 downloads</div>
         </div>
+        
         <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('demon-pc-script','https://lockedapp.org/cl/js/n625kv',2000)"><i class="fas fa-desktop"></i> Download PC <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('demon-pc-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="demon-pc-instructions" class="instruction-text">Verify by selecting an offer to get the PC game.</div>
@@ -341,97 +833,275 @@
 
         <div class="separator-line"></div>
 
-        <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version:</div>
+        <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version</div>
         <div class="video-container"><iframe src="https://www.youtube.com/embed/CTmUg2Zc8hs" allowfullscreen></iframe></div>
         <p><strong>Mobile Version:</strong> Optimized for Android & iOS. Run in PPSSPP full drive.</p>
+        
         <div class="fake-stats">
             <div><i class="fas fa-star"></i> 4.7/5</div>
             <div>~987,654 downloads</div>
         </div>
+        
         <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('demon-mobile-script','https://lockedapp.net/cl/js/qnern3',2000)"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('demon-mobile-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="demon-mobile-instructions" class="instruction-text">Verify by selecting an offer to get the mobile game.</div>
         <div id="demon-mobile-script"></div>
-        <button class="back-btn back-bottom" onclick="goBack()">Go Back</button>
     </div>
 
     <!-- Naruto -->
     <div id="naruto" class="game-info">
-        <button class="back-btn" onclick="goBack()">Go Back</button>
-        <h2>Naruto Mod</h2>
-        <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version:</div>
+        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back to Games</button>
+        
+        <div class="game-header">
+            <div class="game-header-image">
+                <img src="https://sm.ign.com/ign_in/screenshot/default/naruto-ultimate-ninja-storm-cover_rbhk.jpg" alt="Naruto">
+            </div>
+            <div class="game-header-info">
+                <div class="game-header-title">Naruto Ultimate Ninja Storm</div>
+                <div class="game-header-meta">
+                    <div class="game-header-platform">Mobile</div>
+                </div>
+                <div class="game-header-stats">
+                    <div class="game-stat"><i class="fas fa-star"></i> 4.6/5</div>
+                    <div class="game-stat"><i class="fas fa-download"></i> 876,543 downloads</div>
+                </div>
+                <div class="game-header-tags">
+                    <div class="game-tag mod">Unlimited Money</div>
+                    <div class="game-tag">Action</div>
+                    <div class="game-tag apk">APK</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version</div>
         <div class="video-container"><iframe src="https://www.youtube.com/embed/QtjRZTKUcdc" allowfullscreen></iframe></div>
         <p><strong>Mobile Version:</strong> Optimized for Android & iOS. Unlimited Money Mod.</p>
+        
         <div class="fake-stats">
             <div><i class="fas fa-star"></i> 4.6/5</div>
             <div>~876,543 downloads</div>
         </div>
+        
         <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('naruto-mobile-script','https://lockedapp.org/cl/js/grq5qp',2000)"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('naruto-mobile-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="naruto-mobile-instructions" class="instruction-text">Verify by selecting an offer to get the mobile game.</div>
         <div id="naruto-mobile-script"></div>
-        <button class="back-btn back-bottom" onclick="goBack()">Go Back</button>
     </div>
 
     <!-- One Piece -->
     <div id="onepiece" class="game-info">
-        <button class="back-btn" onclick="goBack()">Go Back</button>
-        <h2>One Piece: Bounty Rush Mod</h2>
-        <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version:</div>
+        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back to Games</button>
+        
+        <div class="game-header">
+            <div class="game-header-image">
+                <img src="https://www.latestmodapks.com/wp-content/uploads/2023/04/ONE-PIECE-Bounty-Rush-1.webp" alt="One Piece">
+            </div>
+            <div class="game-header-info">
+                <div class="game-header-title">One Piece: Bounty Rush</div>
+                <div class="game-header-meta">
+                    <div class="game-header-platform">Mobile</div>
+                </div>
+                <div class="game-header-stats">
+                    <div class="game-stat"><i class="fas fa-star"></i> 4.5/5</div>
+                    <div class="game-stat"><i class="fas fa-download"></i> 765,432 downloads</div>
+                </div>
+                <div class="game-header-tags">
+                    <div class="game-tag mod">Unlimited Money</div>
+                    <div class="game-tag">Adventure</div>
+                    <div class="game-tag apk">APK</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version</div>
         <div class="video-container"><iframe src="https://www.youtube.com/embed/ZwI5_1yNz5I" allowfullscreen></iframe></div>
         <p><strong>Mobile Version:</strong> Optimized for Android & iOS. Unlimited Money Mod.</p>
+        
         <div class="fake-stats">
             <div><i class="fas fa-star"></i> 4.5/5</div>
             <div>~765,432 downloads</div>
         </div>
+        
         <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('onepiece-mobile-script','https://lockverify.org/cl/js/1x581p',2000)"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('onepiece-mobile-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="onepiece-mobile-instructions" class="instruction-text">Finish at least one offer to get One Piece game.</div>
         <div id="onepiece-mobile-script"></div>
-        <button class="back-btn back-bottom" onclick="goBack()">Go Back</button>
     </div>
 
-    <!-- Solo Leveling - Mobile Only -->
+    <!-- Solo Leveling -->
     <div id="solo" class="game-info">
-        <button class="back-btn" onclick="goBack()">Go Back</button>
-        <h2>Solo Leveling: Arise</h2>
-        <span class="mod-label">Mod - Unlimited Money</span>
+        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back to Games</button>
         
-        <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version:</div>
+        <div class="game-header">
+            <div class="game-header-image">
+                <img src="https://gaming-cdn.com/images/products/19526/orig/solo-leveling-arise-overdrive-pc-steam-cover.jpg?v=1756394713" alt="Solo Leveling">
+            </div>
+            <div class="game-header-info">
+                <div class="game-header-title">Solo Leveling: Arise</div>
+                <div class="game-header-meta">
+                    <div class="game-header-platform">Mobile</div>
+                </div>
+                <div class="game-header-stats">
+                    <div class="game-stat"><i class="fas fa-star"></i> 4.8/5</div>
+                    <div class="game-stat"><i class="fas fa-download"></i> 1,200,000 downloads</div>
+                </div>
+                <div class="game-header-tags">
+                    <div class="game-tag mod">Unlimited Money</div>
+                    <div class="game-tag">RPG</div>
+                    <div class="game-tag apk">APK</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version</div>
         <div class="video-container"><iframe src="https://www.youtube.com/embed/z8HAzlv61uc" allowfullscreen></iframe></div>
         <p><strong>Mobile Version:</strong> Optimized for Android & iOS. Unlimited Money Mod included.</p>
+        
         <div class="fake-stats">
             <div><i class="fas fa-star"></i> 4.8/5</div>
             <div>~1,200,000 downloads</div>
         </div>
+        
         <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('solo-mobile-script','https://lockedapp.net/cl/js/n623pk',2000)"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('solo-mobile-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="solo-mobile-instructions" class="instruction-text">Complete one verification offer to unlock the mobile download.</div>
         <div id="solo-mobile-script"></div>
+    </div>
+
+    <!-- The Hidden Ones -->
+    <div id="hiddenones" class="game-info">
+        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back to Games</button>
         
-        <button class="back-btn back-bottom" onclick="goBack()">Go Back</button>
+        <div class="game-header">
+            <div class="game-header-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMfswS4P5yOhi9ZJd_HifNdLQw4ve3D6x_X7e1pKVxgu9KTirp_HqL6AbgnRQ6CvGCf9c&usqp=CAU" alt="The Hidden Ones">
+            </div>
+            <div class="game-header-info">
+                <div class="game-header-title">The Hidden Ones</div>
+                <div class="game-header-meta">
+                    <div class="game-header-platform">Mobile</div>
+                </div>
+                <div class="game-header-stats">
+                    <div class="game-stat"><i class="fas fa-star"></i> 4.5/5</div>
+                    <div class="game-stat"><i class="fas fa-download"></i> 543,210 downloads</div>
+                </div>
+                <div class="game-header-tags">
+                    <div class="game-tag">Action</div>
+                    <div class="game-tag">Adventure</div>
+                    <div class="game-tag apk">APK</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version</div>
+        <div class="video-container"><iframe src="https://www.youtube.com/embed/TxslurvnJXI" allowfullscreen></iframe></div>
+        <p><strong>Mobile Version:</strong> Stealth action adventure in an open world with RPG elements.</p>
+        
+        <div class="fake-stats">
+            <div><i class="fas fa-star"></i> 4.5/5</div>
+            <div>~543,210 downloads</div>
+        </div>
+        
+        <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('hiddenones-script','https://pagelocked.org/cl/js/34oqgn',2000)"><i class="fas fa-download"></i> Download APK <span class="loading"></span></button>
+        <button class="how-btn" onclick="toggleInstructions('hiddenones-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
+        <div id="hiddenones-instructions" class="instruction-text">Verify by selecting an offer to get the APK file.</div>
+        <div id="hiddenones-script"></div>
     </div>
 </div>
 
 <script>
+    // Hamburger menu functionality
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const topGamesLink = document.getElementById('topGamesLink');
+    const upcomingGamesLink = document.getElementById('upcomingGamesLink');
+    const topGamesMenu = document.getElementById('topGamesMenu');
+    const upcomingGamesMenu = document.getElementById('upcomingGamesMenu');
+    const pagination = document.getElementById('pagination');
+    const aboutSection = document.getElementById('aboutSection');
+    
+    hamburgerMenu.addEventListener('click', function() {
+        dropdownMenu.classList.toggle('active');
+    });
+    
+    topGamesLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        topGamesMenu.classList.toggle('active');
+        upcomingGamesMenu.classList.remove('active');
+    });
+    
+    upcomingGamesLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        upcomingGamesMenu.classList.toggle('active');
+        topGamesMenu.classList.remove('active');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!hamburgerMenu.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('active');
+            topGamesMenu.classList.remove('active');
+            upcomingGamesMenu.classList.remove('active');
+        }
+    });
+    
+    // Track navigation history
+    let navigationHistory = [];
+    
     function showGame(id){
-        document.querySelector('.game-grid').style.display = 'none';
+        // Add current state to history
+        navigationHistory.push({
+            gameList: document.querySelector('.game-list').style.display,
+            pagination: pagination.style.display,
+            aboutSection: aboutSection.style.display,
+            activeGame: document.querySelector('.game-info[style*="display: block"]')?.id
+        });
+        
+        document.querySelector('.game-list').style.display = 'none';
         document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
+        // Hide pagination and about section when viewing a game
+        pagination.style.display = 'none';
+        aboutSection.style.display = 'none';
+        
         const page = document.getElementById(id);
         if (page) {
             page.style.display = 'block';
             page.style.boxShadow = "0 10px 35px rgba(0,0,0,0.7)";
             window.scrollTo(0,0);
         }
+        // Close dropdown menu when a game is selected
+        dropdownMenu.classList.remove('active');
+        topGamesMenu.classList.remove('active');
+        upcomingGamesMenu.classList.remove('active');
     }
+    
     function goBack(){
-        document.querySelector('.game-grid').style.display = 'grid';
-        document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
+        if (navigationHistory.length > 0) {
+            const previousState = navigationHistory.pop();
+            
+            document.querySelector('.game-list').style.display = previousState.gameList;
+            pagination.style.display = previousState.pagination;
+            aboutSection.style.display = previousState.aboutSection;
+            
+            document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
+            if (previousState.activeGame) {
+                document.getElementById(previousState.activeGame).style.display = 'block';
+            }
+        } else {
+            // Fallback to default behavior
+            document.querySelector('.game-list').style.display = 'flex';
+            document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
+            // Show pagination and about section when going back to games list
+            pagination.style.display = 'flex';
+            aboutSection.style.display = 'block';
+        }
     }
+    
     function toggleInstructions(id){
         const el = document.getElementById(id);
         el.style.display = (el.style.display === 'block') ? 'none' : 'block';
     }
+    
     function loadScriptDelayed(containerId, src, delay){
         setTimeout(() => {
             const container = document.getElementById(containerId);
@@ -444,11 +1114,53 @@
             container.appendChild(script);
         }, delay);
     }
+    
     function showLoading(button){
         const spinner = button.querySelector('.loading');
         if (!spinner) return;
         spinner.style.display = 'inline-block';
         setTimeout(()=>{ spinner.style.display = 'none'; }, 4000);
+    }
+
+    // Search functionality
+    function filterGames() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toLowerCase();
+        const gameList = document.getElementById('gameList');
+        const games = gameList.getElementsByClassName('game-item');
+        
+        for (let i = 0; i < games.length; i++) {
+            const title = games[i].getElementsByClassName('game-title')[0];
+            const description = games[i].getElementsByClassName('game-description')[0];
+            const tags = games[i].getElementsByClassName('game-tag');
+            
+            let titleText = title.textContent || title.innerText;
+            let descriptionText = description.textContent || description.innerText;
+            
+            // Check if search term matches title, description, or any tag
+            let matchFound = false;
+            
+            if (titleText.toLowerCase().indexOf(filter) > -1) {
+                matchFound = true;
+            } else if (descriptionText.toLowerCase().indexOf(filter) > -1) {
+                matchFound = true;
+            } else {
+                // Check tags
+                for (let j = 0; j < tags.length; j++) {
+                    const tagText = tags[j].textContent || tags[j].innerText;
+                    if (tagText.toLowerCase().indexOf(filter) > -1) {
+                        matchFound = true;
+                        break;
+                    }
+                }
+            }
+            
+            if (matchFound) {
+                games[i].style.display = "flex";
+            } else {
+                games[i].style.display = "none";
+            }
+        }
     }
 
     document.addEventListener("DOMContentLoaded", function() {
