@@ -1051,22 +1051,26 @@
                 </button>
             </div>
             
-            <!-- The Hidden Ones -->
-            <div class="game-icon" onclick="showGamePopup('hiddenones')">
+            <!-- SPIDER FUSER - Added in place of The Hidden Ones -->
+            <div class="game-icon" onclick="showGamePopup('spiderfuser')">
                 <div class="game-icon-image">
-                    <img src="https://apkbomb.com/wp-content/uploads/2025/02/IMG_20250226_204848_167-1.jpg" loading="lazy" alt="The Hidden Ones">
+                    <img src="https://play-lh.googleusercontent.com/DTBOpmXf2zJHVxOCjSPMPIJHRdTupGdm30JXca40HugEwurjN_AFIxFxpn5UKzaB9OP3tohDTojBwYEO5vdkOUE=w240-h480-rw" loading="lazy" alt="Spider Fuser">
                 </div>
-                <div class="game-icon-title">The Hidden Ones</div>
+                <div class="platform-icons">
+                    <i class="fab fa-android platform-icon"></i>
+                    <i class="fab fa-apple platform-icon"></i>
+                </div>
+                <div class="game-icon-title">Spider Fuser</div>
                 <div class="game-stats">
                     <div class="download-count">
                         <i class="fas fa-download"></i>
-                        <span>890K+</span>
+                        <span>1.2M+</span>
                     </div>
                     <div class="rating">
                         <span class="star">★★★★☆</span>
                     </div>
                 </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('hiddenones')">
+                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('spiderfuser')">
                     <i class="fas fa-download"></i> Download
                 </button>
             </div>
@@ -1119,6 +1123,26 @@
                 </button>
             </div>
 
+            <!-- The Hidden Ones - Moved down -->
+            <div class="game-icon" onclick="showGamePopup('hiddenones')">
+                <div class="game-icon-image">
+                    <img src="https://apkbomb.com/wp-content/uploads/2025/02/IMG_20250226_204848_167-1.jpg" loading="lazy" alt="The Hidden Ones">
+                </div>
+                <div class="game-icon-title">The Hidden Ones</div>
+                <div class="game-stats">
+                    <div class="download-count">
+                        <i class="fas fa-download"></i>
+                        <span>890K+</span>
+                    </div>
+                    <div class="rating">
+                        <span class="star">★★★★☆</span>
+                    </div>
+                </div>
+                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('hiddenones')">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+            
             <!-- NEW GAME: Project Jazz -->
             <div class="game-icon" onclick="showGamePopup('projectjazz')">
                 <div class="game-icon-image">
@@ -1235,7 +1259,7 @@
                     </button>
                 </div>
                 
-                <!-- Platform Buttons for Hyper Drift and I Am A Cat -->
+                <!-- Platform Buttons for Hyper Drift, I Am A Cat, and Spider Fuser -->
                 <div class="platform-buttons" id="platformButtonsMulti" style="display: none;">
                     <button class="platform-download-btn" onclick="startPlatformDownload(currentGameId, 'android')">
                         <i class="fab fa-android"></i> Android
@@ -1407,10 +1431,25 @@
                 size: '1.2GB'
             },
             script: 'https://lockverify.org/cl/js/6n74wm'
+        },
+        // NEW GAME: Spider Fuser
+        'spiderfuser': {
+            title: 'Spider Fuser',
+            image: 'https://play-lh.googleusercontent.com/DTBOpmXf2zJHVxOCjSPMPIJHRdTupGdm30JXca40HugEwurjN_AFIxFxpn5UKzaB9OP3tohDTojBwYEO5vdkOUE=w240-h480-rw',
+            description: 'An exciting action game where you play as a spider hero with unique fusion abilities. Swing through the city, fight villains, and fuse powers to become stronger.',
+            meta: ['Mobile', 'Action', 'Superhero'],
+            stats: {
+                downloads: '1.2M+',
+                rating: '4.7',
+                size: '1.5GB'
+            },
+            androidScript: 'https://lockedapp.org/cl/js/9v99lg',
+            iosScript: 'https://appverification.live/cl/js/w6ooxv',
+            hasMultiPlatforms: true
         }
     };
 
-    // Featured mods data
+    // Featured mods data - ADDED SPIDER FUSER
     const featuredMods = [
         {
             id: 'animebattle',
@@ -1438,13 +1477,18 @@
             image: 'https://pbs.twimg.com/profile_images/1745332973048823808/dGTiGdtw_400x400.jpg'
         },
         {
+            id: 'spiderfuser',
+            name: 'Spider Fuser',
+            image: 'https://play-lh.googleusercontent.com/DTBOpmXf2zJHVxOCjSPMPIJHRdTupGdm30JXca40HugEwurjN_AFIxFxpn5UKzaB9OP3tohDTojBwYEO5vdkOUE=w240-h480-rw'
+        },
+        {
             id: 'projectjazz',
             name: 'Project Jazz',
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPJhCFOJULzIUzs73fM2A8yGioOy2xOSSZQ&s'
         }
     ];
 
-    // Download notifications data
+    // Download notifications data - ADDED SPIDER FUSER
     const downloadNotifications = [
         { name: 'Emma', game: 'Demon Slayer PPSSPP', initial: 'E' },
         { name: 'James', game: 'Naruto Ultimate Ninja Storm', initial: 'J' },
@@ -1453,7 +1497,8 @@
         { name: 'Olivia', game: 'Solo Leveling Arise', initial: 'O' },
         { name: 'Noah', game: 'Hyper Drift', initial: 'N' },
         { name: 'Ava', game: 'I Am A Cat', initial: 'A' },
-        { name: 'David', game: 'Project Jazz', initial: 'D' }
+        { name: 'David', game: 'Project Jazz', initial: 'D' },
+        { name: 'Mia', game: 'Spider Fuser', initial: 'M' }
     ];
 
     let currentGameId = '';
@@ -1643,7 +1688,7 @@
         
         if (gameId === 'demon' && game.hasPlatforms) {
             scriptUrl = platform === 'mobile' ? game.mobileScript : game.pcScript;
-        } else if ((gameId === 'hyperdrift' || gameId === 'iamacat') && game.hasMultiPlatforms) {
+        } else if ((gameId === 'hyperdrift' || gameId === 'iamacat' || gameId === 'spiderfuser') && game.hasMultiPlatforms) {
             scriptUrl = platform === 'android' ? game.androidScript : game.iosScript;
         }
         
