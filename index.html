@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vaultz4Games</title>
+    <title>Vaultz4Games - Download Free Modded Games</title>
+    <meta name="description" content="Download 100% working anime & top games for PC & Mobile. Free modded games with verified content.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -21,27 +22,28 @@
             min-height: 100vh;
         }
 
-        /* Open in Browser Popup Styles */
+        /* Browser Popup - Optimized for mobile */
         #browserOverlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 15px;
         }
 
         #browserPopup {
             background: #1b1e3a;
             border: 2px solid #1e90ff;
             border-radius: 15px;
-            padding: 25px;
+            padding: 20px;
             max-width: 320px;
-            width: 90%;
+            width: 100%;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
             position: relative;
@@ -120,7 +122,7 @@
             color: #1e90ff;
         }
 
-        /* Your existing styles */
+        /* Main container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -273,7 +275,7 @@
             font-size: 16px;
         }
 
-        /* Space between featured mods and games */
+        /* Games Section */
         .games-section {
             margin-top: 50px;
         }
@@ -285,7 +287,7 @@
             text-align: center;
         }
 
-        /* Game grid styles - 2 GAMES PER ROW with dark blue background */
+        /* Game grid styles */
         .game-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -303,13 +305,12 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            background: rgba(30, 60, 120, 0.3); /* Dark blue background */
+            background: rgba(30, 60, 120, 0.3);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 15px;
             border: 1px solid rgba(30, 144, 255, 0.2);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            /* FIX: Consistent height and button alignment */
             min-height: 280px;
             justify-content: space-between;
         }
@@ -341,7 +342,6 @@
             color: #ffffff;
             margin-bottom: 8px;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-            /* FIX: Ensure consistent title height */
             min-height: 40px;
             display: flex;
             align-items: center;
@@ -362,7 +362,6 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            /* FIX: Push button to bottom */
             margin-top: auto;
             width: 100%;
         }
@@ -823,6 +822,21 @@
             margin-top: 30px;
         }
 
+        /* Loading indicator */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #1e90ff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .game-grid {
@@ -947,221 +961,11 @@
         </div>
     </div>
 
-    <!-- GAMES SECTION - 2 GAMES PER ROW with dark blue background -->
+    <!-- GAMES SECTION -->
     <div class="games-section" id="games-section">
         <h2>All Games</h2>
         <div class="game-grid" id="gameGrid">
-            <!-- Anime Battle Royal -->
-            <div class="game-icon" onclick="showGamePopup('animebattle')">
-                <div class="game-icon-image">
-                    <img src="https://i.ytimg.com/vi/btgqblq80FU/maxresdefault.jpg" loading="lazy" alt="Anime Battle Royal">
-                </div>
-                <div class="game-icon-title">Anime Battle Royal</div>
-                <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>2.4M+</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">★★★★★</span>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('animebattle')">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
-            
-            <!-- Demon Slayer -->
-            <div class="game-icon" onclick="showGamePopup('demon')">
-                <div class="game-icon-image">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfsfPFRQSX8xm_Oe-cf4a10rACtSs23ovRTQ&s" loading="lazy" alt="Demon Slayer">
-                </div>
-                <div class="game-icon-title">Demon Slayer</div>
-                <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>3.0M+</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">★★★★☆</span>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('demon')">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
-            
-            <!-- Naruto Ultimate Ninja Storm -->
-            <div class="game-icon" onclick="showGamePopup('naruto')">
-                <div class="game-icon-image">
-                    <img src="https://play-lh.googleusercontent.com/nY6KhEkl64SudLvb2dwHP-pg4edvjegZnW9fIWaL8FFlEUq2LZKpseanjJtA_uJk4K0c" loading="lazy" alt="Naruto Ultimate Ninja Storm">
-                </div>
-                <div class="game-icon-title">Naruto Ultimate Ninja Storm</div>
-                <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>3.2M+</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">★★★★★</span>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('naruto')">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
-            
-            <!-- One Piece -->
-            <div class="game-icon" onclick="showGamePopup('onepiece')">
-                <div class="game-icon-image">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMHw_2cgPjz9I9BNlTa_uQBs0-AK_pHjiq3Q&s" loading="lazy" alt="One Piece">
-                </div>
-                <div class="game-icon-title">One Piece</div>
-                <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>2.1M+</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">★★★★☆</span>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('onepiece')">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
-            
-            <!-- Solo Leveling Arise -->
-            <div class="game-icon" onclick="showGamePopup('solo')">
-                <div class="game-icon-image">
-                    <img src="https://pbs.twimg.com/profile_images/1745332973048823808/dGTiGdtw_400x400.jpg" loading="lazy" alt="Solo Leveling Arise">
-                </div>
-                <div class="game-icon-title">Solo Leveling Arise</div>
-                <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>1.5M+</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">★★★★★</span>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('solo')">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
-            
-            <!-- SPIDER FUSER - Added in place of The Hidden Ones -->
-            <div class="game-icon" onclick="showGamePopup('spiderfuser')">
-                <div class="game-icon-image">
-                    <img src="https://play-lh.googleusercontent.com/DTBOpmXf2zJHVxOCjSPMPIJHRdTupGdm30JXca40HugEwurjN_AFIxFxpn5UKzaB9OP3tohDTojBwYEO5vdkOUE=w240-h480-rw" loading="lazy" alt="Spider Fuser">
-                </div>
-                <div class="platform-icons">
-                    <i class="fab fa-android platform-icon"></i>
-                    <i class="fab fa-apple platform-icon"></i>
-                </div>
-                <div class="game-icon-title">Spider Fuser</div>
-                <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>1.2M+</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">★★★★☆</span>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('spiderfuser')">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
-            
-            <!-- Hyper Drift -->
-            <div class="game-icon" onclick="showGamePopup('hyperdrift')">
-                <div class="game-icon-image">
-                    <img src="https://modcombo.com/uploads/2021/8/hyper-drift-thumbnail.jpg" loading="lazy" alt="Hyper Drift">
-                </div>
-                <div class="platform-icons">
-                    <i class="fab fa-android platform-icon"></i>
-                    <i class="fab fa-apple platform-icon"></i>
-                </div>
-                <div class="game-icon-title">Hyper Drift</div>
-                <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>950K+</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">★★★★☆</span>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('hyperdrift')">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
-            
-            <!-- I Am A Cat -->
-            <div class="game-icon" onclick="showGamePopup('iamacat')">
-                <div class="game-icon-image">
-                    <img src="https://play-lh.googleusercontent.com/qPz2598bkAbZKDV5tm6-nt0xJdTeSp9rcw-msxEZAYUrvdEtHM82lknNWYsNY2FB_Q" loading="lazy" alt="I Am A Cat">
-                </div>
-                <div class="platform-icons">
-                    <i class="fab fa-android platform-icon"></i>
-                    <i class="fab fa-apple platform-icon"></i>
-                </div>
-                <div class="game-icon-title">I Am A Cat</div>
-                <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>1.1M+</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">★★★★☆</span>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('iamacat')">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
-
-            <!-- The Hidden Ones - Moved down -->
-            <div class="game-icon" onclick="showGamePopup('hiddenones')">
-                <div class="game-icon-image">
-                    <img src="https://apkbomb.com/wp-content/uploads/2025/02/IMG_20250226_204848_167-1.jpg" loading="lazy" alt="The Hidden Ones">
-                </div>
-                <div class="game-icon-title">The Hidden Ones</div>
-                <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>890K+</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">★★★★☆</span>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('hiddenones')">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
-            
-            <!-- NEW GAME: Project Jazz -->
-            <div class="game-icon" onclick="showGamePopup('projectjazz')">
-                <div class="game-icon-image">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPJhCFOJULzIUzs73fM2A8yGioOy2xOSSZQ&s" loading="lazy" alt="Project Jazz">
-                </div>
-                <div class="game-icon-title">Project Jazz</div>
-                <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>1.8M+</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">★★★★★</span>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadGameFromHome('projectjazz')">
-                    <i class="fas fa-download"></i> Download
-                </button>
-            </div>
+            <!-- Games will be loaded dynamically -->
         </div>
     </div>
 
@@ -1259,7 +1063,7 @@
                     </button>
                 </div>
                 
-                <!-- Platform Buttons for Hyper Drift, I Am A Cat, and Spider Fuser -->
+                <!-- Platform Buttons for Multi-platform games -->
                 <div class="platform-buttons" id="platformButtonsMulti" style="display: none;">
                     <button class="platform-download-btn" onclick="startPlatformDownload(currentGameId, 'android')">
                         <i class="fab fa-android"></i> Android
@@ -1300,6 +1104,8 @@
     // Browser Popup Functions
     function closeBrowserPopup() {
         document.getElementById('browserOverlay').style.display = 'none';
+        // Track popup close
+        trackEvent('Browser Popup', 'Closed');
     }
 
     // Auto close after 6 seconds
@@ -1314,8 +1120,19 @@
         }
     });
 
-    // Your existing JavaScript code
-    // Game data
+    // Track page views and user interactions
+    function trackEvent(category, action, label) {
+        // This is where you would integrate with your analytics
+        console.log(`Tracking: ${category} - ${action} - ${label}`);
+        
+        // Example: Send to Google Analytics (if implemented)
+        // gtag('event', action, {
+        //     'event_category': category,
+        //     'event_label': label
+        // });
+    }
+
+    // Game data - optimized for performance
     const gameData = {
         'animebattle': {
             title: 'Anime Battle Royal',
@@ -1379,17 +1196,19 @@
             },
             script: 'https://applocked.org/cl/js/n623pk'
         },
-        'hiddenones': {
-            title: 'The Hidden Ones',
-            image: 'https://apkbomb.com/wp-content/uploads/2025/02/IMG_20250226_204848_167-1.jpg',
-            description: 'A thrilling stealth action game where you play as an assassin in ancient times. Use stealth and assassination techniques to eliminate targets.',
-            meta: ['PC', 'Stealth', 'Action'],
+        'spiderfuser': {
+            title: 'Spider Fuser',
+            image: 'https://play-lh.googleusercontent.com/DTBOpmXf2zJHVxOCjSPMPIJHRdTupGdm30JXca40HugEwurjN_AFIxFxpn5UKzaB9OP3tohDTojBwYEO5vdkOUE=w240-h480-rw',
+            description: 'An exciting action game where you play as a spider hero with unique fusion abilities. Swing through the city, fight villains, and fuse powers to become stronger.',
+            meta: ['Mobile', 'Action', 'Superhero'],
             stats: {
-                downloads: '890K+',
-                rating: '4.4',
-                size: '3.2GB'
+                downloads: '1.2M+',
+                rating: '4.7',
+                size: '1.5GB'
             },
-            script: 'https://lockedapp.org/cl/js/34oqgn'
+            androidScript: 'https://lockedapp.org/cl/js/9v99lg',
+            iosScript: 'https://appverification.live/cl/js/w6ooxv',
+            hasMultiPlatforms: true
         },
         'hyperdrift': {
             title: 'Hyper Drift',
@@ -1419,7 +1238,18 @@
             iosScript: 'https://lockedapp.org/cl/js/n62l9k',
             hasMultiPlatforms: true
         },
-        // NEW GAME: Project Jazz
+        'hiddenones': {
+            title: 'The Hidden Ones',
+            image: 'https://apkbomb.com/wp-content/uploads/2025/02/IMG_20250226_204848_167-1.jpg',
+            description: 'A thrilling stealth action game where you play as an assassin in ancient times. Use stealth and assassination techniques to eliminate targets.',
+            meta: ['PC', 'Stealth', 'Action'],
+            stats: {
+                downloads: '890K+',
+                rating: '4.4',
+                size: '3.2GB'
+            },
+            script: 'https://lockedapp.org/cl/js/34oqgn'
+        },
         'projectjazz': {
             title: 'Project Jazz',
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPJhCFOJULzIUzs73fM2A8yGioOy2xOSSZQ&s',
@@ -1431,25 +1261,10 @@
                 size: '1.2GB'
             },
             script: 'https://lockverify.org/cl/js/6n74wm'
-        },
-        // NEW GAME: Spider Fuser
-        'spiderfuser': {
-            title: 'Spider Fuser',
-            image: 'https://play-lh.googleusercontent.com/DTBOpmXf2zJHVxOCjSPMPIJHRdTupGdm30JXca40HugEwurjN_AFIxFxpn5UKzaB9OP3tohDTojBwYEO5vdkOUE=w240-h480-rw',
-            description: 'An exciting action game where you play as a spider hero with unique fusion abilities. Swing through the city, fight villains, and fuse powers to become stronger.',
-            meta: ['Mobile', 'Action', 'Superhero'],
-            stats: {
-                downloads: '1.2M+',
-                rating: '4.7',
-                size: '1.5GB'
-            },
-            androidScript: 'https://lockedapp.org/cl/js/9v99lg',
-            iosScript: 'https://appverification.live/cl/js/w6ooxv',
-            hasMultiPlatforms: true
         }
     };
 
-    // Featured mods data - ADDED SPIDER FUSER
+    // Featured mods data
     const featuredMods = [
         {
             id: 'animebattle',
@@ -1467,16 +1282,6 @@
             image: 'https://play-lh.googleusercontent.com/nY6KhEkl64SudLvb2dwHP-pg4edvjegZnW9fIWaL8FFlEUq2LZKpseanjJtA_uJk4K0c'
         },
         {
-            id: 'onepiece',
-            name: 'One Piece',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMHw_2cgPjz9I9BNlTa_uQBs0-AK_pHjiq3Q&s'
-        },
-        {
-            id: 'solo',
-            name: 'Solo Leveling Arise',
-            image: 'https://pbs.twimg.com/profile_images/1745332973048823808/dGTiGdtw_400x400.jpg'
-        },
-        {
             id: 'spiderfuser',
             name: 'Spider Fuser',
             image: 'https://play-lh.googleusercontent.com/DTBOpmXf2zJHVxOCjSPMPIJHRdTupGdm30JXca40HugEwurjN_AFIxFxpn5UKzaB9OP3tohDTojBwYEO5vdkOUE=w240-h480-rw'
@@ -1488,7 +1293,7 @@
         }
     ];
 
-    // Download notifications data - ADDED SPIDER FUSER
+    // Download notifications data
     const downloadNotifications = [
         { name: 'Emma', game: 'Demon Slayer PPSSPP', initial: 'E' },
         { name: 'James', game: 'Naruto Ultimate Ninja Storm', initial: 'J' },
@@ -1513,12 +1318,68 @@
         featuredMods.forEach(mod => {
             const modElement = document.createElement('div');
             modElement.className = 'featured-mod';
-            modElement.onclick = () => showGamePopup(mod.id);
+            modElement.onclick = () => {
+                trackEvent('Featured Mod', 'Click', mod.name);
+                showGamePopup(mod.id);
+            };
             modElement.innerHTML = `
-                <img src="${mod.image}" alt="${mod.name}">
+                <img src="${mod.image}" alt="${mod.name}" loading="lazy">
                 <h3>${mod.name}</h3>
             `;
             slider.appendChild(modElement);
+        });
+    }
+
+    // Initialize games grid
+    function initGamesGrid() {
+        const gameGrid = document.getElementById('gameGrid');
+        gameGrid.innerHTML = '';
+        
+        const gameOrder = [
+            'animebattle', 'demon', 'naruto', 'onepiece', 
+            'solo', 'spiderfuser', 'hyperdrift', 'iamacat', 
+            'hiddenones', 'projectjazz'
+        ];
+        
+        gameOrder.forEach(gameId => {
+            const game = gameData[gameId];
+            const gameElement = document.createElement('div');
+            gameElement.className = 'game-icon';
+            gameElement.onclick = () => {
+                trackEvent('Game Grid', 'Click', game.title);
+                showGamePopup(gameId);
+            };
+            
+            let platformIcons = '';
+            if (game.hasMultiPlatforms || gameId === 'spiderfuser') {
+                platformIcons = `
+                    <div class="platform-icons">
+                        <i class="fab fa-android platform-icon"></i>
+                        <i class="fab fa-apple platform-icon"></i>
+                    </div>
+                `;
+            }
+            
+            gameElement.innerHTML = `
+                <div class="game-icon-image">
+                    <img src="${game.image}" alt="${game.title}" loading="lazy">
+                </div>
+                ${platformIcons}
+                <div class="game-icon-title">${game.title}</div>
+                <div class="game-stats">
+                    <div class="download-count">
+                        <i class="fas fa-download"></i>
+                        <span>${game.stats.downloads}</span>
+                    </div>
+                    <div class="rating">
+                        <span class="star">${game.stats.rating >= 4.5 ? '★★★★★' : '★★★★☆'}</span>
+                    </div>
+                </div>
+                <button class="download-btn" onclick="event.stopPropagation(); trackEvent('Game Grid', 'Download Click', '${game.title}'); downloadGameFromHome('${gameId}')">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            `;
+            gameGrid.appendChild(gameElement);
         });
     }
 
@@ -1589,7 +1450,7 @@
                 platformButtons.style.display = 'flex';
                 platformButtonsMulti.style.display = 'none';
                 regularDownload.style.display = 'none';
-            } else if (game.hasMultiPlatforms) {
+            } else if (game.hasMultiPlatforms || gameId === 'spiderfuser') {
                 platformButtons.style.display = 'none';
                 platformButtonsMulti.style.display = 'flex';
                 regularDownload.style.display = 'none';
@@ -1607,10 +1468,13 @@
             
             // Show popup
             document.getElementById('gamePopup').classList.add('active');
+            
+            // Track popup view
+            trackEvent('Game Popup', 'View', game.title);
         }
     }
 
-    // NEW FUNCTION: Download game from home menu
+    // Download game from home menu
     function downloadGameFromHome(gameId) {
         // First show the game popup
         showGamePopup(gameId);
@@ -1621,9 +1485,10 @@
         }, 500);
     }
 
-    // NEW FUNCTION: Start platform download
+    // Start platform download
     function startPlatformDownload(gameId, platform) {
         currentPlatform = platform;
+        trackEvent('Platform Selection', 'Click', `${gameData[gameId].title} - ${platform}`);
         
         // Hide platform buttons
         document.getElementById('platformButtons').style.display = 'none';
@@ -1637,6 +1502,8 @@
     }
 
     function downloadGame(gameId) {
+        trackEvent('Download', 'Start', gameData[gameId].title);
+        
         // Show installation progress
         const progressSection = document.getElementById('popupProgress');
         progressSection.style.display = 'block';
@@ -1663,10 +1530,13 @@
             progressSection.style.display = 'none';
             const verifySection = document.getElementById('popupVerify');
             verifySection.style.display = 'block';
+            trackEvent('Download', 'Verify Prompt', gameData[gameId].title);
         }, 3000);
     }
 
     function showContentLocker(gameId, platform) {
+        trackEvent('Verification', 'Start', `${gameData[gameId].title} - ${platform}`);
+        
         // Hide verify section
         document.getElementById('popupVerify').style.display = 'none';
         
@@ -1675,7 +1545,7 @@
         contentLocker.style.display = 'block';
         
         // Clear previous content
-        contentLocker.innerHTML = '';
+        contentLocker.innerHTML = '<div class="locker-placeholder"><div class="loading"></div> Loading verification...</div>';
         
         // Create and load the script
         const script = document.createElement('script');
@@ -1688,11 +1558,21 @@
         
         if (gameId === 'demon' && game.hasPlatforms) {
             scriptUrl = platform === 'mobile' ? game.mobileScript : game.pcScript;
-        } else if ((gameId === 'hyperdrift' || gameId === 'iamacat' || gameId === 'spiderfuser') && game.hasMultiPlatforms) {
+        } else if ((game.hasMultiPlatforms || gameId === 'spiderfuser') && (platform === 'android' || platform === 'ios')) {
             scriptUrl = platform === 'android' ? game.androidScript : game.iosScript;
         }
         
         script.src = scriptUrl;
+        
+        // Add error handling for script loading
+        script.onerror = function() {
+            contentLocker.innerHTML = '<div class="locker-placeholder">Error loading verification. Please try again.</div>';
+            trackEvent('Verification', 'Script Error', `${game.title} - ${platform}`);
+        };
+        
+        script.onload = function() {
+            trackEvent('Verification', 'Script Loaded', `${game.title} - ${platform}`);
+        };
         
         // Add the script to the locker
         contentLocker.appendChild(script);
@@ -1701,19 +1581,26 @@
         setTimeout(showDownloadNotification, 15000);
     }
 
-    // FIXED: goHome function now properly returns to main menu
     function goHome() {
         closeGamePopup();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        trackEvent('Navigation', 'Home Click', 'Logo');
     }
 
     function closeGamePopup() {
         document.getElementById('gamePopup').classList.remove('active');
+        trackEvent('Game Popup', 'Close', currentGameId);
     }
 
     function toggleFaq(element) {
         const faqItem = element.parentElement;
+        const isOpening = !faqItem.classList.contains('active');
         faqItem.classList.toggle('active');
+        
+        if (isOpening) {
+            const question = element.textContent.trim();
+            trackEvent('FAQ', 'Expand', question);
+        }
     }
 
     // Search functionality
@@ -1730,6 +1617,10 @@
                 icon.style.display = 'none';
             }
         });
+        
+        if (filter.length > 0) {
+            trackEvent('Search', 'Query', filter);
+        }
     }
 
     // Close popup when clicking outside
@@ -1748,7 +1639,11 @@
 
     // Initialize the page
     document.addEventListener('DOMContentLoaded', function() {
+        // Track page view
+        trackEvent('Page', 'View', 'Homepage');
+        
         initFeaturedMods();
+        initGamesGrid();
         
         // Start showing download notifications every 20 seconds
         notificationInterval = setInterval(showDownloadNotification, 20000);
@@ -1759,6 +1654,13 @@
             featuredMods.push(firstMod);
             initFeaturedMods();
         }, 5000);
+        
+        // Track user engagement (time on page)
+        let timeStart = Date.now();
+        window.addEventListener('beforeunload', function() {
+            const timeSpent = Math.round((Date.now() - timeStart) / 1000);
+            trackEvent('Engagement', 'Time Spent', `${timeSpent}s`);
+        });
     });
 </script>
 </body>
