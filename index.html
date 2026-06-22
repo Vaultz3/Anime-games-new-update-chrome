@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +15,7 @@
         }
 
         body {
-            background: #0d1021;
+            background: #060810;
             color: #f0f0f0;
             line-height: 1.6;
             overflow-x: hidden;
@@ -235,7 +234,7 @@
             gap: 15px;
             padding: 10px 0;
             scrollbar-width: thin;
-            scrollbar-color: #1e90ff #0d1021;
+            scrollbar-color: #1e90ff #060810;
         }
 
         .mods-slider::-webkit-scrollbar {
@@ -243,7 +242,7 @@
         }
 
         .mods-slider::-webkit-scrollbar-track {
-            background: #0d1021;
+            background: #060810;
             border-radius: 10px;
         }
 
@@ -289,7 +288,7 @@
             text-align: center;
         }
 
-        /* Game grid styles - FIXED */
+        /* Game grid styles */
         .game-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -972,19 +971,29 @@
 
         @media (max-width: 576px) {
             .game-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
             
             .game-icon {
                 max-width: 100%;
-                padding: 15px;
-                min-height: 280px;
+                padding: 12px;
+                min-height: 260px;
             }
             
             .game-icon-image {
-                width: 120px;
-                height: 120px;
+                width: 100px;
+                height: 100px;
+            }
+
+            .game-icon-title {
+                font-size: 13px;
+                min-height: 36px;
+            }
+
+            .download-btn {
+                font-size: 12px;
+                padding: 8px 10px;
             }
             
             .search-bar {
@@ -1258,6 +1267,30 @@
             iosScript: 'https://redirectapps.online/cl/js/l7kpvd',
             hasMultiPlatforms: true
         },
+        'naruto': {
+            title: 'Naruto Ultimate Ninja Storm',
+            image: 'https://play-lh.googleusercontent.com/nY6KhEkl64SudLvb2dwHP-pg4edvjegZnW9fIWaL8FFlEUq2LZKpseanjJtA_uJk4K0c',
+            description: 'Experience the epic story of Naruto in this action-packed adventure game. Relive key moments from the anime and master powerful jutsus.',
+            meta: ['Mobile', 'MOD', 'Action'],
+            stats: { downloads: '3.2M+', rating: '4.9' },
+            script: 'https://lockverify.org/cl/js/grq5qp'
+        },
+        'animebattle': {
+            title: 'Anime Battle Royal',
+            image: 'https://i.ytimg.com/vi/btgqblq80FU/maxresdefault.jpg',
+            description: 'Fight with your favorite anime characters in this epic battle royale game. Experience intense battles with characters from various anime series in a massive multiplayer arena.',
+            meta: ['Mobile', 'Action', 'Battle Royale'],
+            stats: { downloads: '2.4M+', rating: '4.8' },
+            script: 'https://applocked.org/cl/js/9vq61g'
+        },
+        'choochoo': {
+            title: 'Choo-Choo Charles',
+            image: 'https://images.sftcdn.net/images/t_app-icon-m/p/1e86ef24-90d7-4663-864f-2afef2f0c295/343062018/choo-choo-charles-icon.png',
+            description: 'Choo-Choo Charles is a thrilling horror survival game available for your phone! Escape from a terrifying spider-train monster named Charles as you explore an open island. Gather resources, upgrade your train, and survive the nightmare — optimized for mobile play!',
+            meta: ['Mobile', 'Horror', 'Survival'],
+            stats: { downloads: '980K+', rating: '4.6' },
+            script: 'https://saveapp.store/cl/js/82v6qj'
+        },
         'demon': {
             title: 'Demon Slayer',
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfsfPFRQSX8xm_Oe-cf4a10rACtSs23ovRTQ&s',
@@ -1267,14 +1300,6 @@
             mobileScript: 'https://applocked.org/cl/js/qnern3',
             pcScript: 'https://pagelocked.org/cl/js/n625kv',
             hasPlatforms: true
-        },
-        'naruto': {
-            title: 'Naruto Ultimate Ninja Storm',
-            image: 'https://play-lh.googleusercontent.com/nY6KhEkl64SudLvb2dwHP-pg4edvjegZnW9fIWaL8FFlEUq2LZKpseanjJtA_uJk4K0c',
-            description: 'Experience the epic story of Naruto in this action-packed adventure game. Relive key moments from the anime and master powerful jutsus.',
-            meta: ['Mobile', 'MOD', 'Action'],
-            stats: { downloads: '3.2M+', rating: '4.9' },
-            script: 'https://lockverify.org/cl/js/grq5qp'
         },
         'gtamobile': {
             title: 'GTA Mobile',
@@ -1346,14 +1371,6 @@
             stats: { downloads: '2.1M+', rating: '4.6' },
             script: 'https://lockverify.org/cl/js/1x581p'
         },
-        'animebattle': {
-            title: 'Anime Battle Royal',
-            image: 'https://i.ytimg.com/vi/btgqblq80FU/maxresdefault.jpg',
-            description: 'Fight with your favorite anime characters in this epic battle royale game. Experience intense battles with characters from various anime series in a massive multiplayer arena.',
-            meta: ['Mobile', 'Action', 'Battle Royale'],
-            stats: { downloads: '2.4M+', rating: '4.8' },
-            script: 'https://applocked.org/cl/js/9vq61g'
-        },
         'iamacat': {
             title: 'I Am A Cat',
             image: 'https://play-lh.googleusercontent.com/qPz2598bkAbZKDV5tm6-nt0xJdTeSp9rcw-msxEZAYUrvdEtHM82lknNWYsNY2FB_Q',
@@ -1363,23 +1380,15 @@
             androidScript: 'https://lockedapp.org/cl/js/kr7dj9',
             iosScript: 'https://lockedapp.org/cl/js/n62l9k',
             hasMultiPlatforms: true
-        },
-        'newgame': {
-            title: 'Clash of Scary Squad',
-            image: 'https://play-lh.googleusercontent.com/TqN6BNlAwfE1Npkc5UIXYagv-tlkrsOvM2FRXIcUVtxFWMGsfQYCxKfY-QXT0QNYeaA',
-            description: 'An exciting new gaming experience with stunning graphics and immersive gameplay.',
-            meta: ['Mobile', 'Action', 'Adventure'],
-            stats: { downloads: '1.7M+', rating: '4.7' },
-            androidScript: 'https://redirectapps.org/cl/js/1xo2ld',
-            iosScript: 'https://redirectapps.org/cl/js/4o25wj',
-            hasMultiPlatforms: true
         }
     };
 
     const featuredMods = [
         { id: 'highwayracer', name: 'Highway Racer Pro', image: 'https://play-lh.googleusercontent.com/jW79FoXH3pHq0uxKlgBZh2sG15xF0zEBpf9_xHEoqe9f05mVFhujpP58s02ZqAwj6zc=w240-h480-rw' },
-        { id: 'demon', name: 'Demon Slayer', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfsfPFRQSX8xm_Oe-cf4a10rACtSs23ovRTQ&s' },
         { id: 'naruto', name: 'Naruto Ultimate Ninja Storm', image: 'https://play-lh.googleusercontent.com/nY6KhEkl64SudLvb2dwHP-pg4edvjegZnW9fIWaL8FFlEUq2LZKpseanjJtA_uJk4K0c' },
+        { id: 'animebattle', name: 'Anime Battle Royal', image: 'https://i.ytimg.com/vi/btgqblq80FU/maxresdefault.jpg' },
+        { id: 'choochoo', name: 'Choo-Choo Charles', image: 'https://images.sftcdn.net/images/t_app-icon-m/p/1e86ef24-90d7-4663-864f-2afef2f0c295/343062018/choo-choo-charles-icon.png' },
+        { id: 'demon', name: 'Demon Slayer', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfsfPFRQSX8xm_Oe-cf4a10rACtSs23ovRTQ&s' },
         { id: 'spiderfuser', name: 'Spider Man 2', image: 'https://imgs.search.brave.com/FcxyTyENP8bmB4-TT_SMVGJqznbWlr6KzojE8Q3CUIk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdHls/ZXMucmVkZGl0bWVk/aWEuY29tL3Q1XzNm/bWpoL3N0eWxlcy9j/b21tdW5pdHlJY29u/X3BodzhzZnNuMWVi/YzEucG5n' },
         { id: 'gtamobile', name: 'GTA Mobile', image: 'https://img.utdstc.com/icon/d45/de4/d45de47f27a8471894c3465c1cd8516cc8aea333bf7a27b1291cb9ecca45172f:200' }
     ];
@@ -1396,7 +1405,7 @@
         { name: 'Mia', game: 'Spider Man 2', initial: 'M' },
         { name: 'Ethan', game: 'One Piece', initial: 'E' },
         { name: 'Alex', game: 'Anime Battle Royal', initial: 'A' },
-        { name: 'Lucas', game: 'Clash of Scary Squad', initial: 'L' }
+        { name: 'Lucas', game: 'Choo-Choo Charles', initial: 'L' }
     ];
 
     let currentGameId = '';
@@ -1429,16 +1438,19 @@
     function initGamesGrid() {
         const gameGrid = document.getElementById('gameGrid');
         gameGrid.innerHTML = '';
-        const gameOrder = ['highwayracer','demon','naruto','gtamobile','projectjazz','spiderfuser','infernusparadise','csr2','hiddenones','solo','onepiece','animebattle','newgame'];
+        // Order: Highway Racer, Naruto, Anime Battle Royal, Choo-Choo Charles, then rest
+        const gameOrder = ['highwayracer','naruto','animebattle','choochoo','demon','gtamobile','projectjazz','spiderfuser','infernusparadise','csr2','hiddenones','solo','onepiece','iamacat'];
         gameOrder.forEach(gameId => {
             const game = gameData[gameId];
             const gameElement = document.createElement('div');
             gameElement.className = 'game-icon';
             gameElement.onclick = () => { trackEvent('Game Grid', 'Click', game.title); showGamePopup(gameId); };
             let platformIcons = '';
-            if (game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'newgame') {
+            if (game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'iamacat') {
                 platformIcons = `<div class="platform-icons"><i class="fab fa-android platform-icon"></i><i class="fab fa-apple platform-icon"></i></div>`;
             } else if (gameId === 'infernusparadise') {
+                platformIcons = `<div class="platform-icons"><i class="fab fa-android platform-icon"></i></div>`;
+            } else if (gameId === 'choochoo') {
                 platformIcons = `<div class="platform-icons"><i class="fab fa-android platform-icon"></i></div>`;
             }
             gameElement.innerHTML = `
@@ -1499,7 +1511,7 @@
                 platformButtons.style.display = 'flex';
                 platformButtonsMulti.style.display = 'none';
                 regularDownload.style.display = 'none';
-            } else if (game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'newgame') {
+            } else if (game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'iamacat') {
                 platformButtons.style.display = 'none';
                 platformButtonsMulti.style.display = 'flex';
                 regularDownload.style.display = 'none';
@@ -1563,7 +1575,7 @@
         let scriptUrl = game.script;
         if (gameId === 'demon' && game.hasPlatforms) {
             scriptUrl = platform === 'mobile' ? game.mobileScript : game.pcScript;
-        } else if ((game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'newgame') && (platform === 'android' || platform === 'ios')) {
+        } else if ((game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'iamacat') && (platform === 'android' || platform === 'ios')) {
             scriptUrl = platform === 'android' ? game.androidScript : game.iosScript;
         }
         script.src = scriptUrl;
@@ -1596,7 +1608,7 @@
         let scriptUrl = game.script;
         if (gameId === 'demon' && game.hasPlatforms) {
             scriptUrl = platform === 'mobile' ? game.mobileScript : game.pcScript;
-        } else if ((game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'newgame') && (platform === 'android' || platform === 'ios')) {
+        } else if ((game.hasMultiPlatforms || gameId === 'spiderfuser' || gameId === 'gtamobile' || gameId === 'highwayracer' || gameId === 'csr2' || gameId === 'iamacat') && (platform === 'android' || platform === 'ios')) {
             scriptUrl = platform === 'android' ? game.androidScript : game.iosScript;
         }
         const iframe = document.createElement('iframe');
@@ -1663,5 +1675,3 @@
 </script>
 </body>
 </html>
-
-
