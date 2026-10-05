@@ -307,6 +307,7 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             min-height: 320px;
             justify-content: space-between;
+            position: relative;
         }
 
         .game-icon:hover {
@@ -407,6 +408,28 @@
         .platform-icon {
             font-size: 12px;
             color: #1e90ff;
+        }
+
+        /* NEW Badge and Animation */
+        .new-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff3b3b;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            z-index: 10;
+            box-shadow: 0 0 5px rgba(255, 59, 59, 0.6);
+            animation: glowPulse 1.5s infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            from { box-shadow: 0 0 5px rgba(255, 59, 59, 0.6); transform: scale(1); }
+            to { box-shadow: 0 0 12px rgba(255, 59, 59, 0.9); transform: scale(1.05); }
         }
 
         .features-icons {
@@ -1181,8 +1204,9 @@
     }
 
     const gameData = {
+        'animecrossover': { title: 'Anime CrossOver Tceam', image: 'https://i.ytimg.com/vi/_AolBReAa7k/maxresdefault.jpg', description: 'Experience the ultimate anime crossover team battle! Dive into epic action and fight alongside your favorite anime characters. (Get access to Drive file). In case they ask for a code to run the game, here is one: YTREVIEWGAMINGHD. They probably won\'t ask.', meta: ['Mobile', 'Action', 'Crossover'], stats: { downloads: '1.2M+', rating: '4.8' }, script: 'https://trckapp.org/cl/js/82l11j', isNew: true },
         'mechachameleon': { title: 'Mecha Chameleon Mobile', image: 'https://imgs.search.brave.com/GSz0jc1AVAySQbMwrGLJzvw9mXr2IUOMp5WoZUbI2wk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtd2l4bXAtZWQz/MGE4NmI4YzRjYTg4/Nzc3MzU5NGMyLndp/eG1wLmNvbS9pLzkw/ZTRmZWFiLWQ1ZTct/NDZiNi04YTczLTYw/NjUyZDY3ZDA0OS9k/bWMzaTFyLTk5Mzk4/M2Y5LTYwMmUtNDlk/NC1hYzAxLWM0ZDk0/ODU1YjAyMC5wbmc', description: 'Control a mechanical chameleon in this fast-paced action arcade game. Adapt your colors, blend into environments, and complete exciting challenges on the go.', meta: ['Mobile', 'Action', 'Arcade'], stats: { downloads: '1.5M+', rating: '4.8' }, androidScript: 'https://appsave.online/cl/js/271pjd', iosScript: 'https://appsave.space/cl/js/j7nl3p', hasMultiPlatforms: true },
-        'gta5': { title: 'Gta 5', image: 'https://imgs.search.brave.com/goaKMCdCccH3Rnu9hLP6tDRllWMsi6-WxgLDmh5yzvY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zLnBu/Z2tpdC5jb20vcG5n/L3NtYWxsLzUyLTUy/MzY3M18zZGYwYzkt/Z3RhLXYtaWNvbi5w/bmc', description: 'Experience the thrilling world of Grand Theft Auto V. Engage in high-stakes heists, explore a massive open world, and follow the intertwining stories of three distinct criminals.', meta: ['PC', 'Action', 'Open World'], stats: { downloads: '8.5M+', rating: '4.9' }, script: 'https://trckapp.org/cl/js/34j1lm' },
+        'gta5': { title: 'Gta 5', image: 'https://imgs.search.brave.com/goaKMCdCccH3Rnu9hLP6tDRllWMsi6-WxgLDmh5yzvY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zLnBu/Z2tpdC5jb20vcG5n/L3NtYWxsLzUyLTUy/MzY3M18zZGYwYzkt/Z3RhLXYtaWNvbi5w/bmc', description: 'Experience the thrilling world of Grand Theft Auto V. Engage in high-stakes heists, explore a massive open world, and follow the intertwining stories of three distinct criminals.', meta: ['PC', 'Action', 'Open World'], stats: { downloads: '8.5M+', rating: '4.9' }, script: 'https://trckapp.org/cl/js/34j1lm', isNew: true },
         'naruto': { title: 'Naruto Ultimate Ninja Storm', image: 'https://play-lh.googleusercontent.com/nY6KhEkl64SudLvb2dwHP-pg4edvjegZnW9fIWaL8FFlEUq2LZKpseanjJtA_uJk4K0c', description: 'Experience the epic story of Naruto in this action-packed adventure game. Relive key moments from the anime and master powerful jutsus.', meta: ['Mobile', 'MOD', 'Action'], stats: { downloads: '3.2M+', rating: '4.9' }, script: 'https://lockverify.org/cl/js/grq5qp' },
         'animebattle': { title: 'Anime Battle Royal', image: 'https://i.ytimg.com/vi/btgqblq80FU/maxresdefault.jpg', description: 'Fight with your favorite anime characters in this epic battle royale game. Experience intense battles with characters from various anime series in a massive multiplayer arena. (Get access to Drive file)', meta: ['Mobile', 'Action', 'Battle Royale'], stats: { downloads: '2.4M+', rating: '4.8' }, script: 'https://applocked.org/cl/js/9vq61g' },
         'choochoo': { title: 'Choo-Choo Charles', image: 'https://imgs.search.brave.com/WO4AT71h-hjTmi6dE7S-Ibq_wiRYU7kXr14BAfprmdE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdHls/ZXMucmVkZGl0bWVk/aWEuY29tL3Q1XzU0/cWx0MC9zdHlsZXMv/Y29tbXVuaXR5SWNv/bl9nc3p6eTJ5bDNq/cjcxLnBuZw', description: 'Choo-Choo Charles is a thrilling horror survival game available for your phone! Escape from a terrifying spider-train monster named Charles as you explore an open island. Gather resources, upgrade your train, and survive the nightmare — optimized for mobile play!', meta: ['Mobile', 'Horror', 'Survival'], stats: { downloads: '980K+', rating: '4.6' }, script: 'https://saveapp.store/cl/js/82v6qj' },
@@ -1199,7 +1223,7 @@
 
     const featuredMods = [
         { id: 'gta5', name: 'Gta 5', image: 'https://imgs.search.brave.com/goaKMCdCccH3Rnu9hLP6tDRllWMsi6-WxgLDmh5yzvY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zLnBu/Z2tpdC5jb20vcG5n/L3NtYWxsLzUyLTUy/MzY3M18zZGYwYzkt/Z3RhLXYtaWNvbi5w/bmc' },
-        { id: 'naruto', name: 'Naruto Ultimate Ninja Storm', image: 'https://play-lh.googleusercontent.com/nY6KhEkl64SudLvb2dwHP-pg4edvjegZnW9fIWaL8FFlEUq2LZKpseanjJtA_uJk4K0c' },
+        { id: 'animecrossover', name: 'Anime CrossOver Tceam', image: 'https://i.ytimg.com/vi/_AolBReAa7k/maxresdefault.jpg' },
         { id: 'animebattle', name: 'Anime Battle Royal', image: 'https://i.ytimg.com/vi/btgqblq80FU/maxresdefault.jpg' },
         { id: 'choochoo', name: 'Choo-Choo Charles', image: 'https://imgs.search.brave.com/WO4AT71h-hjTmi6dE7S-Ibq_wiRYU7kXr14BAfprmdE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdHls/ZXMucmVkZGl0bWVk/aWEuY29tL3Q1XzU0/cWx0MC9zdHlsZXMv/Y29tbXVuaXR5SWNv/bl9nc3p6eTJ5bDNq/cjcxLnBuZw' },
         { id: 'demon', name: 'Demon Slayer', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfsfPFRQSX8xm_Oe-cf4a10rACtSs23ovRTQ&s' },
@@ -1252,7 +1276,7 @@
     function initGamesGrid() {
         const gameGrid = document.getElementById('gameGrid');
         gameGrid.innerHTML = '';
-        const gameOrder = ['gta5','naruto','animebattle','choochoo','demon','highwayracer','gtamobile','projectjazz','spiderfuser','csr2','hiddenones','solo','onepiece','mechachameleon'];
+        const gameOrder = ['gta5','animecrossover','animebattle','choochoo','demon','naruto','gtamobile','projectjazz','spiderfuser','csr2','hiddenones','solo','onepiece','mechachameleon','highwayracer'];
         gameOrder.forEach(gameId => {
             const game = gameData[gameId];
             if (!game) return;
@@ -1260,13 +1284,21 @@
             gameElement.className = 'game-icon';
             gameElement.setAttribute('data-title', game.title.toLowerCase());
             gameElement.onclick = () => { trackEvent('Game Grid', 'Click', game.title); showGamePopup(gameId); };
+            
             let platformIcons = '';
             if (game.hasMultiPlatforms || game.hasPlatforms) {
                 platformIcons = '<div class="platform-icons"><i class="fab fa-android platform-icon"></i><i class="fab fa-apple platform-icon"></i></div>';
             } else if (gameId === 'choochoo') {
                 platformIcons = '<div class="platform-icons"><i class="fab fa-android platform-icon"></i></div>';
             }
+
+            let newBadge = '';
+            if (game.isNew) {
+                newBadge = '<div class="new-badge">NEW</div>';
+            }
+
             gameElement.innerHTML =
+                newBadge +
                 '<div class="game-icon-image"><img src="' + game.image + '" alt="' + game.title + '" loading="lazy"></div>' +
                 platformIcons +
                 '<div class="game-icon-title">' + game.title + '</div>' +
@@ -1371,7 +1403,7 @@
         const textEl = document.querySelector('#popupProgress .progress-text');
         let progress = 0;
         const interval = setInterval(() => {
-            progress += Math.random() * 15 + 5;
+            progress += Math.random() * 8 + 4; 
             if (progress >= 100) {
                 progress = 100;
                 clearInterval(interval);
@@ -1383,7 +1415,7 @@
             }
             fill.style.width = progress + '%';
             textEl.textContent = 'Installing... ' + Math.round(progress) + '%';
-        }, 400);
+        }, 800);
     }
 
     function downloadGameFromHome(gameId) {
